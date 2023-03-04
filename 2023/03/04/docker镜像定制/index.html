@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>路由器的配置命令 | wps的blog</title>
+  <title>docker镜像管理 | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="路由器的配置命令 | wps的blog">
+  <meta name="description" content="docker镜像管理 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -561,9 +561,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-路由器的配置命令" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-docker镜像定制" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">路由器的配置命令</h1>
+        <h1 class="article-title">docker镜像管理</h1>
     
     <div class="article-meta">
         
@@ -573,7 +573,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="思科">思科</a>
+            <a  data-rel="运维">运维</a>
             
         </span>
         
@@ -581,12 +581,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-02-13 22:34:30'>2023-02-13 21:47</time>
+            Created At : <time class="date" title='Updated At: 2023-03-04 22:57:12'>2023-03-04 22:41</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:271</span>
+        <span>Count:198</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -616,7 +616,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E8%AE%BE%E5%A4%87%E5%90%8D%E7%A7%B0"><span class="toc-text">更改设备名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="toc-text">设置用户密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E5%8A%A0%E5%AF%86"><span class="toc-text">设备加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E7%89%B9%E6%9D%83%E6%A8%A1%E5%BC%8F%E5%8A%A0%E5%AF%86"><span class="toc-text">给特权模式加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="toc-text">给用户权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-text">关闭域名解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%8E%A5%E5%8F%A3IP"><span class="toc-text">配置以太网接口IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%8E%A5%E5%8F%A3%E4%BF%A1%E6%81%AF"><span class="toc-text">查看接口信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEDHCP"><span class="toc-text">配置DHCP</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="toc-text">1.下载镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F%E5%88%A0%E9%99%A4"><span class="toc-text">2.本地镜像删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%95%9C%E5%83%8F%E4%BF%9D%E5%AD%98"><span class="toc-text">3.镜像保存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F%E6%9F%A5%E7%9C%8B"><span class="toc-text">4.本地镜像查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%95%9C%E5%83%8F%E8%BD%BD%E5%85%A5"><span class="toc-text">5.镜像载入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%95%9C%E5%83%8F%E6%90%9C%E7%B4%A2"><span class="toc-text">6.镜像搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%95%9C%E5%83%8F%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-inspect"><span class="toc-text">7.镜像详细信息-inspect</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -632,19 +632,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="更改设备名称"><a href="#更改设备名称" class="headerlink" title="更改设备名称"></a>更改设备名称</h3><p>在全局模式下输入 hostname [要改的名字]</p>
-<h3 id="设置用户密码"><a href="#设置用户密码" class="headerlink" title="设置用户密码"></a>设置用户密码</h3><p>在全局模式下输入 username [用户名] password [密码] 并在线路模式下输入 login local</p>
-<h3 id="设备加密"><a href="#设备加密" class="headerlink" title="设备加密"></a>设备加密</h3><p>在线路模式下输入 password [密码] 回车再输入login</p>
-<h3 id="给特权模式加密"><a href="#给特权模式加密" class="headerlink" title="给特权模式加密"></a>给特权模式加密</h3><p>在全局模式下输入 enable secret [密码]</p>
-<h3 id="给用户权限"><a href="#给用户权限" class="headerlink" title="给用户权限"></a>给用户权限</h3><p>在全局模式下输入 username [用户名] privilege [等级数] password [密码]<br>给设置的用户设置权限等级最高为15</p>
-<h3 id="关闭域名解析"><a href="#关闭域名解析" class="headerlink" title="关闭域名解析"></a>关闭域名解析</h3><p>在全局模式下输入 no ip domain-lookup<br>如果你在路由器下输入一段错误命令时，路由器会把这段内容当成域名在系统中查找。<br>这回使路由器卡顿几分钟。所以，可以在配置之前关闭域名解析节省时间。</p>
-<h3 id="配置以太网接口IP"><a href="#配置以太网接口IP" class="headerlink" title="配置以太网接口IP"></a>配置以太网接口IP</h3><pre><code>Router(config)# int f0/1 //进入以太网接口 
-Router(config-if)# ip address [IP地址] //配置IP地址 
-Router(config-if)# no shutdown //开启接口
+        <h3 id="1-下载镜像"><a href="#1-下载镜像" class="headerlink" title="1.下载镜像"></a>1.下载镜像</h3><p>从docker指定的仓库下载镜像到本地</p>
+<pre><code>docker pull
 </code></pre>
-<h3 id="查看接口信息"><a href="#查看接口信息" class="headerlink" title="查看接口信息"></a>查看接口信息</h3><pre><code>Router# show ip interface brief
+<h3 id="2-本地镜像删除"><a href="#2-本地镜像删除" class="headerlink" title="2.本地镜像删除"></a>2.本地镜像删除</h3><p>删除本地镜像库中的某个镜像</p>
+<pre><code>docker rmi [镜像名称或者ID]
 </code></pre>
-<h3 id="配置DHCP"><a href="#配置DHCP" class="headerlink" title="配置DHCP"></a>配置DHCP</h3>
+<h3 id="3-镜像保存"><a href="#3-镜像保存" class="headerlink" title="3.镜像保存"></a>3.镜像保存</h3><p>保存镜像为压缩文件</p>
+<pre><code>docker save -o 压缩文件名称 [镜像名称或者ID]
+</code></pre>
+<h3 id="4-本地镜像查看"><a href="#4-本地镜像查看" class="headerlink" title="4.本地镜像查看"></a>4.本地镜像查看</h3><pre><code>docker images
+</code></pre>
+<h3 id="5-镜像载入"><a href="#5-镜像载入" class="headerlink" title="5.镜像载入"></a>5.镜像载入</h3><p>导入由save保存出来的压缩文件镜像</p>
+<pre><code>docker load -i 镜像压缩文件名称 [镜像名称或者ID]
+</code></pre>
+<h3 id="6-镜像搜索"><a href="#6-镜像搜索" class="headerlink" title="6.镜像搜索"></a>6.镜像搜索</h3><p>从docker镜像仓库模糊搜索镜像</p>
+<pre><code>docker search 镜像关键字
+</code></pre>
+<h3 id="7-镜像详细信息-inspect"><a href="#7-镜像详细信息-inspect" class="headerlink" title="7.镜像详细信息-inspect"></a>7.镜像详细信息-inspect</h3><p>显示镜像的详细导入由save保存出来的压缩文件镜像</p>
+<pre><code>docker load -i 镜像压缩文件名称 [镜像名称或者ID]
+</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
     </div>
