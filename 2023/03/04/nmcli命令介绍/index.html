@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>DirBuster | wps的blog</title>
+  <title>nmcli命令介绍 | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="DirBuster | wps的blog">
+  <meta name="description" content="nmcli命令介绍 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -570,9 +570,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-DirBuster" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-nmcli命令介绍" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">DirBuster</h1>
+        <h1 class="article-title">nmcli命令介绍</h1>
     
     <div class="article-meta">
         
@@ -582,7 +582,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="渗透">渗透</a>
+            <a  data-rel="运维">运维</a>
             
         </span>
         
@@ -590,12 +590,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-04 23:33:05'>2023-02-15 22:37</time>
+            Created At : <time class="date" title='Updated At: 2023-03-04 23:28:16'>2023-03-04 23:22</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:42</span>
+        <span>Count:221</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -625,7 +625,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nmcli-connection"><span class="toc-text">nmcli connection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nmcli-device"><span class="toc-text">nmcli device</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nmcli%E7%9A%84%E8%BF%94%E5%9B%9E%E4%BF%A1%E6%81%AF"><span class="toc-text">nmcli的返回信息</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -641,9 +641,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>安装<br>官网：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/dirbuster/">https://sourceforge.net/projects/dirbuster/</a></p>
-<p>网盘链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/17ZgZeEc9a9BG3jsbRy8vOw?pwd=wonz">https://pan.baidu.com/s/17ZgZeEc9a9BG3jsbRy8vOw?pwd=wonz</a><br>提取码：wonz</p>
-<p>进入官网直接下载或者网盘下载都可以</p>
+        <h2 id="nmcli-connection"><a href="#nmcli-connection" class="headerlink" title="nmcli connection"></a>nmcli connection</h2><p>命令选项：<br>add		添加<br>delete 		删除<br>edit   		编辑<br>help   		帮助<br>load   		加载<br>monitor  	监控<br>show     	查看<br>clone  		克隆<br>down		停用<br>modify 		修改<br>reload		重载<br>up    		启用</p>
+<h2 id="nmcli-device"><a href="#nmcli-device" class="headerlink" title="nmcli device"></a>nmcli device</h2><p>命令选项：<br>connect     		连接<br>disconnect  		断开<br>lldp        		显示通过lldp协议学习到的相邻设备信息<br>monitor     		监控设备<br>set         		设置设备<br>status      		显示设备状态<br>delete      		删除设备 只能删除软件设备<br>help        		帮助<br>modify      		修改<br>reapply     		更新<br>show        		查看详细信息<br>wifi        		无线网络管理</p>
+<h2 id="nmcli的返回信息"><a href="#nmcli的返回信息" class="headerlink" title="nmcli的返回信息"></a>nmcli的返回信息</h2><p>0: 成功-指示操作已成功<br>1: 位置或指定的错误<br>2: 无效的用户输入，错误的nmcli调用<br>3: 超时了（请参阅 –wait 选项）<br>4: 连接激活失败<br>5: 连接停用失败<br>6: 断开设备失败<br>7: 连接删除失败<br>8: 网络管理器没有运行<br>10: 连接、设备或接入点不存在</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
