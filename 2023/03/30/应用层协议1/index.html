@@ -635,7 +635,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-30 22:12:02'>2023-03-30 21:15</time>
+            Created At : <time class="date" title='Updated At: 2023-03-30 22:20:21'>2023-03-30 21:15</time>
         
     </div>
     <div class="article-meta">
@@ -694,7 +694,7 @@
 <h3 id="（3）客户机查询DNS顺序"><a href="#（3）客户机查询DNS顺序" class="headerlink" title="（3）客户机查询DNS顺序"></a>（3）客户机查询DNS顺序</h3><p>无论是使用递归查询还是迭代查询，都是基于服务器的查询。实际上，在pc端向网络中DNS服务器发出DNS查询前，先要在本机查询DNS缓存，如果不存在IP与域名的映射，再查询本机hosts文件，如果也不存在IP与域名的映射，才会向网络中的DNS服务器发送查询请求。</p>
 <h2 id="DNS资源记录"><a href="#DNS资源记录" class="headerlink" title="DNS资源记录"></a>DNS资源记录</h2><p>1.NS（名称服务器）记录：指定区域中哪个DNS服务器来进行解析<br>2.SOA记录：起始授权记录，记录了众多NS记录里哪一台才是主要的服务器<br>3.A记录：正向域名解析，将域名转换成IP地址的记录<br>4.PTR记录：逆向域名解析，将IP地址转换为域名的记录<br>5.MX记录：邮件交换记录，指向一个邮件服务器，用于电子邮件系统发邮件时根据收信人的地址后缀来定位邮件服务器<br>6.CNAME记录：别名记录，用于将某个别名指向某个A记录上，这种记录允许你将多个名字映射到同一台计算机<br>7.HINFO记录：主机描述，记录cpu，os等信息<br>8.TXT记录：某个主机或域名的说名</p>
 <h1 id="二、DHCP服务器"><a href="#二、DHCP服务器" class="headerlink" title="二、DHCP服务器"></a>二、DHCP服务器</h1><p>DHCP动态主机配置协议可以自动为客户端分配IP地址、子网掩码、默认网关，DNS信息等内容，担任DHCP服务的可以是服务器和交换机，路由器等网络设备。</p>
-<p>DHCP报文类型<br>1.discover：客户端通过广播寻找可以的服务器<br>2.offer：服务器单播应答客户端，并携带IP地址等配置参数：客户端通过广播回应收到第一个offer的发送者服务端。在后期用IP地址租约的50%时，客户端通过单播方式向同一个服务端申请续租<br>3.request：<br>4.ack<br>5.nak<br>6.release<br>7.decline</p>
+<p>DHCP报文类型<br>1.discover：客户端通过广播寻找可以的服务器<br>2.offer：服务器单播应答客户端，并携带IP地址等配置参数：<br>3.request：客户端通过广播回应收到第一个offer的发送者服务端。在后期用IP地址租约的50%时，客户端通过单播方式向同一个服务端申请续租<br>4.ack<br>5.nak<br>6.release<br>7.decline</p>
 <p>DHCP工作原理<br>获取IP地址<br>续租IP地址</p>
 <h1 id="三、FTP服务器"><a href="#三、FTP服务器" class="headerlink" title="三、FTP服务器"></a>三、FTP服务器</h1>
       
