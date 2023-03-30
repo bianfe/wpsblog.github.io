@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>docker commit创建镜像 | wps的blog</title>
+  <title>docker私有仓库 | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="docker commit创建镜像 | wps的blog">
+  <meta name="description" content="docker私有仓库 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -633,9 +633,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-commit创建镜像" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-docker私有仓库" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">docker commit创建镜像</h1>
+        <h1 class="article-title">docker私有仓库</h1>
     
     <div class="article-meta">
         
@@ -653,12 +653,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-08 14:27:43'>2023-03-08 14:03</time>
+            Created At : <time class="date" title='Updated At: 2023-03-30 23:30:30'>2023-03-30 23:19</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:98</span>
+        <span>Count:94</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -704,25 +704,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先拉取一个基础的镜像</p>
-<pre><code>docker pull 
+        <p>拉取registry容器镜像</p>
+<pre><code>docker pull registry
 </code></pre>
-<p>创建一个容器</p>
-<pre><code>docker run -dit --name [容器名] [镜像名]
+<p>创建持久化存储，将容器镜像存储目录&#x2F;var&#x2F;lib&#x2F;registry挂载到本地&#x2F;myregistry下</p>
+<pre><code>mkdir /myregistry
+docker run -d -p 5000:5000 --name wps_registry -v /myregistry:/var/lib/registry registry
 </code></pre>
-<p>进入</p>
-<pre><code>docker exec -it [容器名] /bin/bash
+<p>查看容器是否运行</p>
+<pre><code>docker ps -a
 </code></pre>
-<p>安装工具或者添加东西</p>
-<p>退出容器<br>exit</p>
-<p>生成新镜像</p>
-<pre><code>docker commit [容器名] [新镜像名]
-</code></pre>
-<p>启动新容器</p>
-<pre><code>docker run -dit [新容器名] [新镜像名]
-</code></pre>
-<p>进入新容器</p>
-<pre><code>docker exec -it [新容器名] /bin/bash
+<p>测试</p>
+<pre><code>curl http://192.160.1.1:5000/v2/_catalog
+&#123;&quot;repositories&quot;:[]&#125;  #显示仓库中没有任何镜像
 </code></pre>
 
       
