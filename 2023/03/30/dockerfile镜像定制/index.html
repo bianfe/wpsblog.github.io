@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Nmap | wps的blog</title>
+  <title>dockerfile镜像定制(nginx) | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Nmap | wps的blog">
+  <meta name="description" content="dockerfile镜像定制(nginx) | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -597,9 +597,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Nmap" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-dockerfile镜像定制" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Nmap</h1>
+        <h1 class="article-title">dockerfile镜像定制(nginx)</h1>
     
     <div class="article-meta">
         
@@ -609,7 +609,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="渗透">渗透</a>
+            <a  data-rel="运维">运维</a>
             
         </span>
         
@@ -617,12 +617,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-04 23:32:21'>2023-02-15 22:36</time>
+            Created At : <time class="date" title='Updated At: 2023-03-30 21:02:27'>2023-03-30 20:25</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:42</span>
+        <span>Count:291</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -668,10 +668,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>安装<br>官网：<a target="_blank" rel="noopener" href="https://nmap.org/">https://nmap.org/</a></p>
-<p>网盘链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1vYwSdBK36tDe2Bsw1s_sdg">https://pan.baidu.com/s/1vYwSdBK36tDe2Bsw1s_sdg</a><br>提取码：1tmm</p>
-<p>进入官网直接下载或者网盘下载都可以</p>
-<p>基本操作</p>
+        <p>首先准备一个镜像</p>
+<pre><code>docker pull centos:7
+</code></pre>
+<p>建立镜像目录</p>
+<pre><code>mkdir nginx
+cd nginx
+</code></pre>
+<p>创建Dockerfile文件</p>
+<pre><code>touch Dockerfile
+vim Dockerfile 下写入
+
+FROM centos:7  #基础镜像
+# MAINTAINER 维护者信息
+MAINTAINER wps #维护者信息
+#RUN 执行命令
+RUN yum install -y pro-devel gcc gcc-c++ make zlib-devel tar zlib openssl-devel net-tools wget # 安装依赖包和工具
+RUN wget http://nginx.org/download/nginx-1.9.7.tar.gz  # 官网下载nginx压缩包
+RUN tar -zxvf nginx-1.9.4.tar.gz #解压
+# WORKDIR 指定工作目录
+WORKDIR nginx-1.9.7 #
+RUN mkdir -p /usr/local/nginx # 创建安装目录
+RUN ./configure --prefix=/usr/local/nginx &amp;&amp; make &amp;&amp; make install # prefix指明安装目录，编译make，安装nginx
+# EXPOSE 映射端口
+EXPOSE 80 #开放http80端口
+EXPOSE 443 #开放http443端口
+RUN echo &quot;deamon off;&quot; &gt;&gt; /usr/local/nginx/conf/nginx.conf # 修改配置文件 禁止后台运行
+# CMD类似于RUN命令，用于运行程序。CMD 在dockerrun 时运行，RUN是在docker build时运行
+CMD [&quot;/usr/local/nginx/sbin/nginx&quot;] # 运行脚本,启动nginx
+</code></pre>
+<p>保存退出利用docker build命令生成镜像</p>
+<pre><code>docker build -t wpsnginx:latest .
+</code></pre>
+<p>用新构建的镜像生成新容器</p>
+<pre><code>docker run -dit -P -name dockerfile_nginx wpsnginx:latest
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
