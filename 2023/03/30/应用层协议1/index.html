@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Nmap | wps的blog</title>
+  <title>应用层协议1 | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Nmap | wps的blog">
+  <meta name="description" content="应用层协议1 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -615,9 +615,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Nmap" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-应用层协议1" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Nmap</h1>
+        <h1 class="article-title">应用层协议1</h1>
     
     <div class="article-meta">
         
@@ -627,7 +627,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="渗透">渗透</a>
+            <a  data-rel="网络">网络</a>
             
         </span>
         
@@ -635,12 +635,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-04 23:32:21'>2023-02-15 22:36</time>
+            Created At : <time class="date" title='Updated At: 2023-03-30 22:12:02'>2023-03-30 21:15</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:42</span>
+        <span>Count:1.1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -670,7 +670,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81DNS%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">一、DNS服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%A0%B9%E6%8D%AE%E5%B7%A5%E4%BD%9C%E6%80%A7%E8%B4%A8%E5%88%92%E5%88%86%E7%B1%BB%E5%9E%8B"><span class="toc-text">（1）根据工作性质划分类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%A0%B9%E6%8D%AE%E5%9C%B0%E5%9F%9F%E6%80%A7%E5%88%92%E5%88%86%E7%B1%BB%E5%9E%8B"><span class="toc-text">（2）根据地域性划分类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F"><span class="toc-text">DNS的查询方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2"><span class="toc-text">（1）递归查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2"><span class="toc-text">（2）迭代查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%AE%A2%E6%88%B7%E6%9C%BA%E6%9F%A5%E8%AF%A2DNS%E9%A1%BA%E5%BA%8F"><span class="toc-text">（3）客户机查询DNS顺序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95"><span class="toc-text">DNS资源记录</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">二、DHCP服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81FTP%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">三、FTP服务器</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -686,11 +686,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>安装<br>官网：<a target="_blank" rel="noopener" href="https://nmap.org/">https://nmap.org/</a></p>
-<p>网盘链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1vYwSdBK36tDe2Bsw1s_sdg">https://pan.baidu.com/s/1vYwSdBK36tDe2Bsw1s_sdg</a><br>提取码：1tmm</p>
-<p>进入官网直接下载或者网盘下载都可以</p>
-<p>基本操作</p>
-
+        <h1 id="一、DNS服务器"><a href="#一、DNS服务器" class="headerlink" title="一、DNS服务器"></a>一、DNS服务器</h1><p>DNS是将域名解析成IP的服务，用户可以直接通过域名访问相应的网站而不需要通过IP地址来访问。</p>
+<h2 id="（1）根据工作性质划分类型"><a href="#（1）根据工作性质划分类型" class="headerlink" title="（1）根据工作性质划分类型"></a>（1）根据工作性质划分类型</h2><p>1.主域名服务器：负责维护一个区域的所有域名信息，是特定的所有信息的权威信息源，数据可以修改<br>2.辅助域名服务器：作为主域名服务器的备份提供域名解析服务，解析数据从主域名服务器中同步，不可修改<br>3.缓存域名服务器：将从其他服务器获取的查询应答记录保存在自己的高速缓存中，后续有相同查询的信息就直接调用高速缓存中的记录<br>4.转发域名服务器：负责所有非本地域名的查询。转发域名服务器接到查询后，在其记录中查找</p>
+<h2 id="（2）根据地域性划分类型"><a href="#（2）根据地域性划分类型" class="headerlink" title="（2）根据地域性划分类型"></a>（2）根据地域性划分类型</h2><p>1.根域名服务器：根域名服务器是最高层级的域名服务器。每一个根域名服务器都要存有所有顶级域名服务器的IP地址和域名<br>2.顶级域名服务器：负责管理在本服务器上注册的所有二级域名<br>3.权限域名服务器：DNS的区域划分中，每一个区域都可以设置一台权限域名服务器，负责将管辖区内的地址解析<br>4.本地域名服务器：也称为默认域名服务器。最靠近用户端的服务器</p>
+<h2 id="DNS的查询方式"><a href="#DNS的查询方式" class="headerlink" title="DNS的查询方式"></a>DNS的查询方式</h2><h3 id="（1）递归查询"><a href="#（1）递归查询" class="headerlink" title="（1）递归查询"></a>（1）递归查询</h3><p>如果主机所询问的本地域名服务器不知道被查出来的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其他根域名服务器继续发出查询请求报文（替代该主机继续查询），而不是主机自己进行下一步的查询。本地域名服务其的查询方式一般采用递归查询。</p>
+<h3 id="（2）迭代查询"><a href="#（2）迭代查询" class="headerlink" title="（2）迭代查询"></a>（2）迭代查询</h3><p>当根域名服务器收到本地域名服务器发出的迭代查询请求报时，会给出所要查询的IP地址，如果不存在需要查询的地址，会告诉本地域名服务器下一步去哪个服务器查询，并给出对于服务器的地址。根域名服务器的查询方式一般采用迭代查询。</p>
+<h3 id="（3）客户机查询DNS顺序"><a href="#（3）客户机查询DNS顺序" class="headerlink" title="（3）客户机查询DNS顺序"></a>（3）客户机查询DNS顺序</h3><p>无论是使用递归查询还是迭代查询，都是基于服务器的查询。实际上，在pc端向网络中DNS服务器发出DNS查询前，先要在本机查询DNS缓存，如果不存在IP与域名的映射，再查询本机hosts文件，如果也不存在IP与域名的映射，才会向网络中的DNS服务器发送查询请求。</p>
+<h2 id="DNS资源记录"><a href="#DNS资源记录" class="headerlink" title="DNS资源记录"></a>DNS资源记录</h2><p>1.NS（名称服务器）记录：指定区域中哪个DNS服务器来进行解析<br>2.SOA记录：起始授权记录，记录了众多NS记录里哪一台才是主要的服务器<br>3.A记录：正向域名解析，将域名转换成IP地址的记录<br>4.PTR记录：逆向域名解析，将IP地址转换为域名的记录<br>5.MX记录：邮件交换记录，指向一个邮件服务器，用于电子邮件系统发邮件时根据收信人的地址后缀来定位邮件服务器<br>6.CNAME记录：别名记录，用于将某个别名指向某个A记录上，这种记录允许你将多个名字映射到同一台计算机<br>7.HINFO记录：主机描述，记录cpu，os等信息<br>8.TXT记录：某个主机或域名的说名</p>
+<h1 id="二、DHCP服务器"><a href="#二、DHCP服务器" class="headerlink" title="二、DHCP服务器"></a>二、DHCP服务器</h1><p>DHCP动态主机配置协议可以自动为客户端分配IP地址、子网掩码、默认网关，DNS信息等内容，担任DHCP服务的可以是服务器和交换机，路由器等网络设备。</p>
+<p>DHCP报文类型<br>1.discover：客户端通过广播寻找可以的服务器<br>2.offer：服务器单播应答客户端，并携带IP地址等配置参数：客户端通过广播回应收到第一个offer的发送者服务端。在后期用IP地址租约的50%时，客户端通过单播方式向同一个服务端申请续租<br>3.request：<br>4.ack<br>5.nak<br>6.release<br>7.decline</p>
+<p>DHCP工作原理<br>获取IP地址<br>续租IP地址</p>
+<h1 id="三、FTP服务器"><a href="#三、FTP服务器" class="headerlink" title="三、FTP服务器"></a>三、FTP服务器</h1>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
     </div>

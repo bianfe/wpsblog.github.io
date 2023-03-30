@@ -112,7 +112,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(31)</small>
+                <small>(33)</small>
             
         </div>
     </li>
@@ -207,7 +207,7 @@
                     <div data-rel="网络">
                         
                         网络
-                        <small>(2)</small>
+                        <small>(4)</small>
                         
                     </div>
                     
@@ -235,8 +235,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="31">
-<input type="hidden" id="yelog_site_word_count" value="6.3k">
+<input type="hidden" id="yelog_site_posts_number" value="33">
+<input type="hidden" id="yelog_site_word_count" value="7.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -299,6 +299,24 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 网络 "
+           href="/2023/03/30/%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="应用层协议2">应用层协议2</span>
+            <span class="post-date" title="2023-03-30 21:19:49">2023/03/30</span>
+        </a>
+        
+        
+        <a  class="All 网络 "
+           href="/2023/03/30/%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="应用层协议1">应用层协议1</span>
+            <span class="post-date" title="2023-03-30 21:15:12">2023/03/30</span>
+        </a>
         
         
         <a  class="All 运维 "
@@ -617,12 +635,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-30 21:02:27'>2023-03-30 20:25</time>
+            Created At : <time class="date" title='Updated At: 2023-03-30 21:09:50'>2023-03-30 20:25</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:291</span>
+        <span>Count:294</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -652,7 +670,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A6%96%E5%85%88%E5%87%86%E5%A4%87%E4%B8%80%E4%B8%AA%E9%95%9C%E5%83%8F"><span class="toc-text">1.首先准备一个镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BB%BA%E7%AB%8B%E9%95%9C%E5%83%8F%E7%9B%AE%E5%BD%95"><span class="toc-text">2.建立镜像目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BADockerfile%E6%96%87%E4%BB%B6"><span class="toc-text">3.创建Dockerfile文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%9D%E5%AD%98%E9%80%80%E5%87%BA%E5%88%A9%E7%94%A8docker-build%E5%91%BD%E4%BB%A4%E7%94%9F%E6%88%90%E9%95%9C%E5%83%8F"><span class="toc-text">4.保存退出利用docker build命令生成镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%94%A8%E6%96%B0%E6%9E%84%E5%BB%BA%E7%9A%84%E9%95%9C%E5%83%8F%E7%94%9F%E6%88%90%E6%96%B0%E5%AE%B9%E5%99%A8"><span class="toc-text">5.用新构建的镜像生成新容器</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -668,15 +686,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先准备一个镜像</p>
-<pre><code>docker pull centos:7
+        <h3 id="1-首先准备一个镜像"><a href="#1-首先准备一个镜像" class="headerlink" title="1.首先准备一个镜像"></a>1.首先准备一个镜像</h3><pre><code>docker pull centos:7
 </code></pre>
-<p>建立镜像目录</p>
-<pre><code>mkdir nginx
+<h3 id="2-建立镜像目录"><a href="#2-建立镜像目录" class="headerlink" title="2.建立镜像目录"></a>2.建立镜像目录</h3><pre><code>mkdir nginx
 cd nginx
 </code></pre>
-<p>创建Dockerfile文件</p>
-<pre><code>touch Dockerfile
+<h3 id="3-创建Dockerfile文件"><a href="#3-创建Dockerfile文件" class="headerlink" title="3.创建Dockerfile文件"></a>3.创建Dockerfile文件</h3><pre><code>touch Dockerfile
 vim Dockerfile 下写入
 
 FROM centos:7  #基础镜像
@@ -697,11 +712,9 @@ RUN echo &quot;deamon off;&quot; &gt;&gt; /usr/local/nginx/conf/nginx.conf # 修
 # CMD类似于RUN命令，用于运行程序。CMD 在dockerrun 时运行，RUN是在docker build时运行
 CMD [&quot;/usr/local/nginx/sbin/nginx&quot;] # 运行脚本,启动nginx
 </code></pre>
-<p>保存退出利用docker build命令生成镜像</p>
-<pre><code>docker build -t wpsnginx:latest .
+<h3 id="4-保存退出利用docker-build命令生成镜像"><a href="#4-保存退出利用docker-build命令生成镜像" class="headerlink" title="4.保存退出利用docker build命令生成镜像"></a>4.保存退出利用docker build命令生成镜像</h3><pre><code>docker build -t wpsnginx:latest .
 </code></pre>
-<p>用新构建的镜像生成新容器</p>
-<pre><code>docker run -dit -P -name dockerfile_nginx wpsnginx:latest
+<h3 id="5-用新构建的镜像生成新容器"><a href="#5-用新构建的镜像生成新容器" class="headerlink" title="5.用新构建的镜像生成新容器"></a>5.用新构建的镜像生成新容器</h3><pre><code>docker run -dit -P -name dockerfile_nginx wpsnginx:latest
 </code></pre>
 
       
