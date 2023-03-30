@@ -112,7 +112,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(33)</small>
+                <small>(34)</small>
             
         </div>
     </li>
@@ -235,8 +235,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="33">
-<input type="hidden" id="yelog_site_word_count" value="7.9k">
+<input type="hidden" id="yelog_site_posts_number" value="34">
+<input type="hidden" id="yelog_site_word_count" value="8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -299,6 +299,15 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2023/03/30/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据链路层">数据链路层</span>
+            <span class="post-date" title="2023-03-30 23:11:28">2023/03/30</span>
+        </a>
         
         
         <a  class="All 网络 "
@@ -635,7 +644,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-30 23:07:16'>2023-03-30 21:15</time>
+            Created At : <time class="date" title='Updated At: 2023-03-30 23:14:22'>2023-03-30 21:15</time>
         
     </div>
     <div class="article-meta">
@@ -697,7 +706,7 @@
 <h2 id="DHCP报文类型"><a href="#DHCP报文类型" class="headerlink" title="DHCP报文类型"></a>DHCP报文类型</h2><p>1.discover：客户端通过广播寻找可以的服务器<br>2.offer：服务器单播应答客户端，并携带IP地址等配置参数<br>3.request：客户端通过广播回应收到第一个offer的发送者服务端。在后期用IP地址租约的50%时，客户端通过单播方式向同一个服务端申请续租<br>4.ack：服务器单播应答客户端，至此，客户端可以正式使用IP地址<br>5.nak：服务端收到request后由于某些原因而无法正常分配IP地址，单播回应nak<br>6.release：客户端不再使用该IP地址时，单播发送报文通知相关服务端<br>7.decline：客户端收到了ack后，使用IP地址发现有地址冲突，则单播告知服务端</p>
 <h2 id="DHCP工作原理"><a href="#DHCP工作原理" class="headerlink" title="DHCP工作原理"></a>DHCP工作原理</h2><h3 id="（1）获取IP地址"><a href="#（1）获取IP地址" class="headerlink" title="（1）获取IP地址"></a>（1）获取IP地址</h3><p>1.DHCP服务端打开UDP 67端口，监听请求<br>2.DHCP客户端从UDP 68利用UDP向服务端发送discover广播形式报文<br>3.DHCP服务端发送offer单播形式报文，携带了IP地址等配置参数<br>4.DHCP客户端从多个DHCP服务端中选择一个，然后向其发送request广播形式报文（一般选择最先收到offer报文的发送者服务端进行回复）<br>5.DHCP服务器回复ack单播形式报文，这时客户才可以正式使用IP地址</p>
 <h3 id="（2）续租IP地址"><a href="#（2）续租IP地址" class="headerlink" title="（2）续租IP地址"></a>（2）续租IP地址</h3><p>1.当租期过了一半，DHCP客户向此刻使用的IP地址的下发服务器发送request单播形式报文，要求更新租用期<br>2.DHCP服务器若同意，则回复ack单播形式报文。DHCP客户得到了新的租用期，重新设置计时器<br>3.DHCP服务器若不同意，则发回否认报文NACK。这时DHCP客户必须立即停止使用原来的IP地址，而必须重新申请IP地址<br>4.若DHCP服务器不响应步骤1，则在租用期87.5%时，DHCP客户必须发送request广播形式报文请求IP地址</p>
-<h1 id="三、FTP服务器"><a href="#三、FTP服务器" class="headerlink" title="三、FTP服务器"></a>三、FTP服务器</h1><p>FTP是一个交互会话的系统，在进行文件传输时，FTP客户和服务器之间需要建立两个TCP连接：</p>
+<h1 id="三、FTP服务器"><a href="#三、FTP服务器" class="headerlink" title="三、FTP服务器"></a>三、FTP服务器</h1><p>FTP是一个交互会话的系统，在进行文件传输时，FTP客户和服务器之间需要建立两个TCP连接：控制连接（TCP </p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
