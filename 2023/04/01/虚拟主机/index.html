@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>docker镜像管理 | wps的blog</title>
+  <title>虚拟主机 | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="docker镜像管理 | wps的blog">
+  <meta name="description" content="虚拟主机 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -642,9 +642,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-docker镜像定制" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-虚拟主机" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">docker镜像管理</h1>
+        <h1 class="article-title">虚拟主机</h1>
     
     <div class="article-meta">
         
@@ -662,12 +662,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-04 22:57:12'>2023-03-04 22:41</time>
+            Created At : <time class="date" title='Updated At: 2023-04-01 00:35:51'>2023-04-01 00:23</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:198</span>
+        <span>Count:130</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -697,7 +697,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="toc-text">1.下载镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F%E5%88%A0%E9%99%A4"><span class="toc-text">2.本地镜像删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%95%9C%E5%83%8F%E4%BF%9D%E5%AD%98"><span class="toc-text">3.镜像保存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F%E6%9F%A5%E7%9C%8B"><span class="toc-text">4.本地镜像查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%95%9C%E5%83%8F%E8%BD%BD%E5%85%A5"><span class="toc-text">5.镜像载入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%95%9C%E5%83%8F%E6%90%9C%E7%B4%A2"><span class="toc-text">6.镜像搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%95%9C%E5%83%8F%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-inspect"><span class="toc-text">7.镜像详细信息-inspect</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -713,26 +713,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-下载镜像"><a href="#1-下载镜像" class="headerlink" title="1.下载镜像"></a>1.下载镜像</h3><p>从docker指定的仓库下载镜像到本地</p>
-<pre><code>docker pull
+        <p>DNS服务器的安装</p>
+<pre><code>yum install bind
 </code></pre>
-<h3 id="2-本地镜像删除"><a href="#2-本地镜像删除" class="headerlink" title="2.本地镜像删除"></a>2.本地镜像删除</h3><p>删除本地镜像库中的某个镜像</p>
-<pre><code>docker rmi [镜像名称或者ID]
+<p>DNS服务器的配置</p>
+<pre><code>vim /etc/named.conf
+
+options&#123;
+    listen-on port 53 &#123;192.168.25.100&#125;; #监听服务器IP
+    allow-query &#123;any;&#125;; #允许所有主机查询
+&#125;
 </code></pre>
-<h3 id="3-镜像保存"><a href="#3-镜像保存" class="headerlink" title="3.镜像保存"></a>3.镜像保存</h3><p>保存镜像为压缩文件</p>
-<pre><code>docker save -o 压缩文件名称 [镜像名称或者ID]
+<p>DNS区域文件的配置</p>
+<pre><code>vim /etc/named.rfc1912.zones
+
+zone &quot;25-wps.cn&quot; IN &#123;
+    type master;
+    file &quot;25-wps.cn.zone&quot;;
+    allow-update &#123;none;&#125;;
+&#125;;
+
+vim /var/named/25-wps.cn.zone
+
+$TTL 3H
+    @   IN  SOA #root.25-wps.cn.(
+                    0   ;serial
+                    1D  ;refresh
+                    1H  ;retry
+                    1W  ;expire
+                    3H  ;minimum
+    )
 </code></pre>
-<h3 id="4-本地镜像查看"><a href="#4-本地镜像查看" class="headerlink" title="4.本地镜像查看"></a>4.本地镜像查看</h3><pre><code>docker images
+<p>启动DNS服务器</p>
+<pre><code>systemctl enable --now named.service
 </code></pre>
-<h3 id="5-镜像载入"><a href="#5-镜像载入" class="headerlink" title="5.镜像载入"></a>5.镜像载入</h3><p>导入由save保存出来的压缩文件镜像</p>
-<pre><code>docker load -i 镜像压缩文件名称 [镜像名称或者ID]
-</code></pre>
-<h3 id="6-镜像搜索"><a href="#6-镜像搜索" class="headerlink" title="6.镜像搜索"></a>6.镜像搜索</h3><p>从docker镜像仓库模糊搜索镜像</p>
-<pre><code>docker search 镜像关键字
-</code></pre>
-<h3 id="7-镜像详细信息-inspect"><a href="#7-镜像详细信息-inspect" class="headerlink" title="7.镜像详细信息-inspect"></a>7.镜像详细信息-inspect</h3><p>显示镜像的详细导入由save保存出来的压缩文件镜像</p>
-<pre><code>docker load -i 镜像压缩文件名称 [镜像名称或者ID]
-</code></pre>
+<p>客户端测试</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
