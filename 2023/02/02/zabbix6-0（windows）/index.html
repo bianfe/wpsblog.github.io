@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>yum源配置 | wps的blog</title>
+  <title>zabbix6.0安装部署（windows） | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="yum源配置 | wps的blog">
+  <meta name="description" content="zabbix6.0安装部署（windows） | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -660,9 +660,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-yum源配置" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-zabbix6-0（windows）" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">yum源配置</h1>
+        <h1 class="article-title">zabbix6.0安装部署（windows）</h1>
     
     <div class="article-meta">
         
@@ -680,12 +680,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-05 00:05:11'>2023-03-04 23:41</time>
+            Created At : <time class="date" title='Updated At: 2023-02-13 17:00:10'>2023-02-02 11:52</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:230</span>
+        <span>Count:209</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -715,7 +715,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0yum%E6%BA%90%E9%85%8D%E7%BD%AE"><span class="toc-text">本地yum源配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A6%96%E5%85%88%E6%8C%82%E8%BD%BD%E5%85%89%E7%9B%98"><span class="toc-text">1.首先挂载光盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BArepo%E6%96%87%E4%BB%B6"><span class="toc-text">2.创建repo文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B5%8B%E8%AF%95yum%E6%BA%90"><span class="toc-text">3.测试yum源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9Cyum%E6%BA%90%E9%85%8D%E7%BD%AE"><span class="toc-text">网络yum源配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%9B%E5%85%A5-x2F-etc-x2F-yum-repos-d-%E5%B0%86%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD%E5%88%B0%E6%96%B0%E5%BB%BA%E7%9B%AE%E5%BD%95%E4%B8%8B"><span class="toc-text">1.进入&#x2F;etc&#x2F;yum.repos.d 将所有文件备份到新建目录下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8B%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91"><span class="toc-text">2.下载阿里云</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E7%BC%93%E5%AD%98"><span class="toc-text">清除缓存</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E5%AE%89%E8%A3%85%E4%B8%8B%E8%BD%BD%E5%90%8E%E8%A7%A3%E5%8E%8B%EF%BC%8C%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">免安装下载后解压，修改配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">手动安装</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -731,31 +731,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="本地yum源配置"><a href="#本地yum源配置" class="headerlink" title="本地yum源配置"></a>本地yum源配置</h2><h3 id="1-首先挂载光盘"><a href="#1-首先挂载光盘" class="headerlink" title="1.首先挂载光盘"></a>1.首先挂载光盘</h3><pre><code>mkdir /dev/cdrom //创建用于挂载光盘的目录
-mount /dev/cdrom /mnt //挂载
+        <p>windows下安装zabbix监控有两种方法</p>
+<h2 id="免安装下载后解压，修改配置文件"><a href="#免安装下载后解压，修改配置文件" class="headerlink" title="免安装下载后解压，修改配置文件"></a>免安装下载后解压，修改配置文件</h2><p>一.下载安装zabbix agents</p>
+<p>压缩包解压另存为zabbix<br><img src="https://tudingtu.cn/i/2023/02/02/nnp4il.png"></p>
+<p>二.修改配置文件</p>
+<p>1.打开zabbix_agentd.conf添加IP地址和主机名称</p>
+<p>在Server&#x3D;后添加zabbix server的IP地址<br><img src="https://tudingtu.cn/i/2023/02/02/nzbcku.png"><br>在Hostname&#x3D;后面添加主机名<br><img src="https://great.wzznft.com/i/2023/02/02/nzygp9.png"></p>
+<p>2.复制二进制文件\bin\zabbix_agentd.exe和修改好的配置文件\conf\zabbix_agentd.conf到文件根目录下<br><img src="https://great.wzznft.com/i/2023/02/02/o3jhmg.png"></p>
+<p>2.将zbbix agent安装为windos服务<br>打开cmd输入下面的命令</p>
+<pre><code class="cmd">f:\zabbix\zabbix_agentd.exe -c -i f:\zabbix\zabbix_agentd.conf
 </code></pre>
-<h3 id="2-创建repo文件"><a href="#2-创建repo文件" class="headerlink" title="2.创建repo文件"></a>2.创建repo文件</h3><p>在 &#x2F;etc&#x2F;yum.repos.d&#x2F;目录下创建的*.repo文件并将其他的网络yum源文件改名或者移动。在新建的文件中写入以下内容</p>
-<pre><code>[cdrom]
-name=cdrom
-baseurl=file:///mnt  //挂载路径
-enabled=1  //是否启用该yum源
-gpgcheck=0  //是否检查数字签名
-gpgkey=[]  //可以进到挂载路径下进行查看
-</code></pre>
-<h3 id="3-测试yum源"><a href="#3-测试yum源" class="headerlink" title="3.测试yum源"></a>3.测试yum源</h3><pre><code>yum clean all //清除yum缓存
-yum makecache  //缓存本地yum源
-yum list  //测试
-</code></pre>
-<h2 id="网络yum源配置"><a href="#网络yum源配置" class="headerlink" title="网络yum源配置"></a>网络yum源配置</h2><h3 id="1-进入-x2F-etc-x2F-yum-repos-d-将所有文件备份到新建目录下"><a href="#1-进入-x2F-etc-x2F-yum-repos-d-将所有文件备份到新建目录下" class="headerlink" title="1.进入&#x2F;etc&#x2F;yum.repos.d 将所有文件备份到新建目录下"></a>1.进入&#x2F;etc&#x2F;yum.repos.d 将所有文件备份到新建目录下</h3><pre><code>cd /etc/yum.repos.d
-mkdir repo
-mv *.repo repo
-</code></pre>
-<h3 id="2-下载阿里云"><a href="#2-下载阿里云" class="headerlink" title="2.下载阿里云"></a>2.下载阿里云</h3><pre><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo //看版本选择下载
-</code></pre>
-<h2 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h2><pre><code>yum clean all
-yum makecache
-yum update -y
-</code></pre>
+<p>三.添加windows主机</p>
+<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><p>安装过程中进行配置和Zabbix服务器的连接信息</p>
+<p>注意：安装时需要正确填写Zabbix服务器的Host name和IP地址</p>
+<p>Host name需要和Zabbix服务端Web页面上设置的主机名称一致</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
