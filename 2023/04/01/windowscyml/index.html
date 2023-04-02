@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>计算机硬件基础 | wps的blog</title>
+  <title>windows常用命令 | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="计算机硬件基础 | wps的blog">
+  <meta name="description" content="windows常用命令 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -302,7 +302,7 @@
         
         
         <a  class="All "
-           href="/2023/04/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/"
+           href="/2023/04/02/jisuanjiyanjianjicu/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="计算机硬件基础">计算机硬件基础</span>
@@ -311,7 +311,7 @@
         
         
         <a  class="All 网络 "
-           href="/2023/04/01/windows%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"
+           href="/2023/04/01/windowscyml/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="windows常用命令">windows常用命令</span>
@@ -320,7 +320,7 @@
         
         
         <a  class="All 运维 "
-           href="/2023/04/01/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/"
+           href="/2023/04/01/xunizhuji/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="虚拟主机">虚拟主机</span>
@@ -660,24 +660,32 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-计算机硬件基础" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-windowscyml" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">计算机硬件基础</h1>
+        <h1 class="article-title">windows常用命令</h1>
     
     <div class="article-meta">
         
         
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="网络">网络</a>
+            
+        </span>
         
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-04-02 14:40:34'>2023-04-02 14:40</time>
+            Created At : <time class="date" title='Updated At: 2023-04-02 14:37:36'>2023-04-01 22:56</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:0</span>
+        <span>Count:275</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -707,7 +715,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ping%EF%BC%9A%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7%EF%BC%8C%E4%BD%BF%E7%94%A8icmp%E5%8D%8F%E8%AE%AE"><span class="toc-text">ping：测试网络连通性，使用icmp协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tracert%EF%BC%9A%E8%B7%AF%E7%94%B1%E8%BF%BD%E8%B8%AA%EF%BC%8C%E4%BD%BF%E7%94%A8icmp%E5%8D%8F%E8%AE%AE"><span class="toc-text">tracert：路由追踪，使用icmp协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#route-print%EF%BC%9A%E6%98%BE%E7%A4%BA%E6%9C%AC%E6%9C%BA%E8%B7%AF%E7%94%B1"><span class="toc-text">route print：显示本机路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#arp-a%EF%BC%9A%E6%98%BE%E7%A4%BA%E4%B8%BB%E6%9C%BAarp%E8%A1%A8"><span class="toc-text">arp -a：显示主机arp表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#netstat%EF%BC%9A%E6%98%BE%E7%A4%BA%E5%8D%8F%E8%AE%AE%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF%E5%92%8C%E5%BD%93%E5%89%8DTCP-x2F-IP%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5"><span class="toc-text">netstat：显示协议统计信息和当前TCP&#x2F;IP网络连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nslookup%EF%BC%9A%E7%94%A8%E4%BA%8E%E6%9F%A5%E8%AF%A2DNS%E8%AE%B0%E5%BD%95%EF%BC%8C%E6%9F%A5%E8%AF%A2%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8"><span class="toc-text">nslookup：用于查询DNS记录，查询域名解析是否正常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ipconfig%EF%BC%9A%E6%98%BE%E7%A4%BA%E6%9C%AC%E6%9C%BA%E7%9A%84TCP-x2F-IP%E4%BF%A1%E6%81%AF"><span class="toc-text">ipconfig：显示本机的TCP&#x2F;IP信息</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -723,7 +731,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="ping：测试网络连通性，使用icmp协议"><a href="#ping：测试网络连通性，使用icmp协议" class="headerlink" title="ping：测试网络连通性，使用icmp协议"></a>ping：测试网络连通性，使用icmp协议</h2><p>-s：带源地址ping<br>-t：长ping<br>-n：指定ping包个数<br>-l：指定ping包大小<br>-f：发送数据包不分片</p>
+<h2 id="tracert：路由追踪，使用icmp协议"><a href="#tracert：路由追踪，使用icmp协议" class="headerlink" title="tracert：路由追踪，使用icmp协议"></a>tracert：路由追踪，使用icmp协议</h2><p>-s：带源地址trace<br>-d：不进行地址解析</p>
+<h2 id="route-print：显示本机路由"><a href="#route-print：显示本机路由" class="headerlink" title="route print：显示本机路由"></a>route print：显示本机路由</h2><h2 id="arp-a：显示主机arp表"><a href="#arp-a：显示主机arp表" class="headerlink" title="arp -a：显示主机arp表"></a>arp -a：显示主机arp表</h2><p>-s IP地址 MAC地址：手动绑定IP和MAC</p>
+<h2 id="netstat：显示协议统计信息和当前TCP-x2F-IP网络连接"><a href="#netstat：显示协议统计信息和当前TCP-x2F-IP网络连接" class="headerlink" title="netstat：显示协议统计信息和当前TCP&#x2F;IP网络连接"></a>netstat：显示协议统计信息和当前TCP&#x2F;IP网络连接</h2><p>-a：显示所有连接和监听端口<br>-b：显示包含于创建每个连接或监听端口的可执行组件<br>-e：显示以太网统计信息<br>-n：以数字形式显示地址和端口号<br>-r：显示路由表信息</p>
+<h2 id="nslookup：用于查询DNS记录，查询域名解析是否正常"><a href="#nslookup：用于查询DNS记录，查询域名解析是否正常" class="headerlink" title="nslookup：用于查询DNS记录，查询域名解析是否正常"></a>nslookup：用于查询DNS记录，查询域名解析是否正常</h2><h2 id="ipconfig：显示本机的TCP-x2F-IP信息"><a href="#ipconfig：显示本机的TCP-x2F-IP信息" class="headerlink" title="ipconfig：显示本机的TCP&#x2F;IP信息"></a>ipconfig：显示本机的TCP&#x2F;IP信息</h2><p>ipconfig &#x2F;all：显示本机TCP&#x2F;IP的详细信息<br>ipconfig &#x2F;release：DHCP客户端手工释放IP地址<br>ipconfig &#x2F;renew：DHCP客户端手工向服务器刷新请求<br>ipconfig &#x2F;flushdns：清除本地DNS缓存内容<br>ipconfig &#x2F;displaydns：显示本地DNS内容</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
     </div>

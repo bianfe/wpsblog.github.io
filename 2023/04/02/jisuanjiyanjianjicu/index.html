@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>虚拟主机 | wps的blog</title>
+  <title>计算机硬件基础 | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="虚拟主机 | wps的blog">
+  <meta name="description" content="计算机硬件基础 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -302,7 +302,7 @@
         
         
         <a  class="All "
-           href="/2023/04/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/"
+           href="/2023/04/02/jisuanjiyanjianjicu/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="计算机硬件基础">计算机硬件基础</span>
@@ -311,7 +311,7 @@
         
         
         <a  class="All 网络 "
-           href="/2023/04/01/windows%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"
+           href="/2023/04/01/windowscyml/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="windows常用命令">windows常用命令</span>
@@ -320,7 +320,7 @@
         
         
         <a  class="All 运维 "
-           href="/2023/04/01/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/"
+           href="/2023/04/01/xunizhuji/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="虚拟主机">虚拟主机</span>
@@ -660,32 +660,24 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-虚拟主机" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-jisuanjiyanjianjicu" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">虚拟主机</h1>
+        <h1 class="article-title">计算机硬件基础</h1>
     
     <div class="article-meta">
         
         
-        
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="运维">运维</a>
-            
-        </span>
         
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-04-01 00:35:51'>2023-04-01 00:23</time>
+            Created At : <time class="date" title='Updated At: 2023-04-02 14:40:34'>2023-04-02 14:40</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:130</span>
+        <span>Count:0</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -731,42 +723,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>DNS服务器的安装</p>
-<pre><code>yum install bind
-</code></pre>
-<p>DNS服务器的配置</p>
-<pre><code>vim /etc/named.conf
-
-options&#123;
-    listen-on port 53 &#123;192.168.25.100&#125;; #监听服务器IP
-    allow-query &#123;any;&#125;; #允许所有主机查询
-&#125;
-</code></pre>
-<p>DNS区域文件的配置</p>
-<pre><code>vim /etc/named.rfc1912.zones
-
-zone &quot;25-wps.cn&quot; IN &#123;
-    type master;
-    file &quot;25-wps.cn.zone&quot;;
-    allow-update &#123;none;&#125;;
-&#125;;
-
-vim /var/named/25-wps.cn.zone
-
-$TTL 3H
-    @   IN  SOA #root.25-wps.cn.(
-                    0   ;serial
-                    1D  ;refresh
-                    1H  ;retry
-                    1W  ;expire
-                    3H  ;minimum
-    )
-</code></pre>
-<p>启动DNS服务器</p>
-<pre><code>systemctl enable --now named.service
-</code></pre>
-<p>客户端测试</p>
-
+        
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
     </div>
