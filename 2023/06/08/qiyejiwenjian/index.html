@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>sql | wps的blog</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="sql | wps的blog">
+  <title>企业级文件服务器搭建 | wps的blog</title>
+  <meta name="keywords" content=" Linux ">
+  <meta name="description" content="企业级文件服务器搭建 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -669,32 +669,31 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-sql" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-qiyejiwenjian" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">sql</h1>
+        <h1 class="article-title">企业级文件服务器搭建</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            <i class="iconfont icon-category"></i>
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
             
-            
-            <a  data-rel="数据库">数据库</a>
+            <a class="color1">Linux</a>
             
         </span>
         
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2023-06-08 23:46:28'>2023-06-08 22:36</time>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-01-28 21:32:00'>2023-01-28 21:31</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>Count:0</span>
+        <span>Count:1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -724,7 +723,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%96%BD%E8%BF%87%E7%A8%8B"><span class="toc-text">项目实施过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="toc-text">快速创建目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">创建组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%90%84%E7%BB%84%E7%9A%84%E6%89%80%E5%B1%9E%E5%91%98%E5%B7%A5"><span class="toc-text">创建各组的所属员工</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0samba"><span class="toc-text">将所有用户添加到samba</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E5%88%86%E6%9E%90"><span class="toc-text">权限分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E7%AE%A1%E7%90%86%E9%83%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9D%83%E9%99%90%EF%BC%88chmod%EF%BC%89%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E8%80%85%EF%BC%88chown%EF%BC%89"><span class="toc-text">修改管理部文件夹权限（chmod）和文件夹所有者（chown）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%B4%A2%E5%8A%A1%E9%83%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9D%83%E9%99%90%EF%BC%88chmod%EF%BC%89%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E8%80%85%EF%BC%88chown%EF%BC%89"><span class="toc-text">修改财务部文件夹权限（chmod）和文件夹所有者（chown）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%88%B6%E9%80%A0%E9%83%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9D%83%E9%99%90%EF%BC%88chmod%EF%BC%89%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E6%9C%89%E8%80%85%EF%BC%88chown%EF%BC%89"><span class="toc-text">修改制造部文件夹权限（chmod）和文件夹所有者（chown）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setfacl%E7%BB%86%E5%88%86%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90"><span class="toc-text">Setfacl细分目录权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9samba%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%B0%86%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E5%87%BA%E5%8E%BB"><span class="toc-text">修改samba配置文件将文件共享出去</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AE%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A6%81%E9%87%8D%E5%90%AFsmb%E6%9C%8D%E5%8A%A1%E6%89%8D%E4%BC%9A%E7%94%9F%E6%95%88"><span class="toc-text">修改完配置文件要重启smb服务才会生效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9selinux%E5%AE%89%E5%85%A8%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-text">修改selinux安全上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E6%94%BE%E8%A1%8Csamba%E6%9C%8D%E5%8A%A1"><span class="toc-text">防火墙放行samba服务</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -740,7 +739,113 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="项目实施过程"><a href="#项目实施过程" class="headerlink" title="项目实施过程"></a>项目实施过程</h1><h2 id="快速创建目录"><a href="#快速创建目录" class="headerlink" title="快速创建目录"></a>快速创建目录</h2><pre><code>mkdir /DocRoot/&#123;公共区,交换区&#125; -p
+mkdir /DocRoot/&#123;管理部,财务部,制造部&#125;/&#123;对外,公共,受控&#125; -p
+</code></pre>
+<h2 id="创建组"><a href="#创建组" class="headerlink" title="创建组"></a>创建组</h2><pre><code>groupadd cwb
+groupadd glb
+groupadd zzb
+groupadd netb
+groupadd leader
+</code></pre>
+<h2 id="创建各组的所属员工"><a href="#创建各组的所属员工" class="headerlink" title="创建各组的所属员工"></a>创建各组的所属员工</h2><pre><code>## 创建管理部员工
+useradd -g glb -s /sbin/nologin glb01
+useradd -g glb -s /sbin/nologin glb02
+useradd -g glb -s /sbin/nologin glb03
+
+## 创建财务部员工
+useradd -g cwb -s /sbin/nologin cwb01
+useradd -g cwb -s /sbin/nologin cwb02
+useradd -g cwb -s /sbin/nologin cwb03
+
+## 创建制造部员工
+useradd -g zzb -s /sbin/nologin zzb01
+useradd -g zzb -s /sbin/nologin zzb02
+useradd -g zzb -s /sbin/nologin zzb03
+
+## 创建领导组员工
+useradd -g leader -s /sbin/nologin leader01
+useradd -g leader -s /sbin/nologin leader02
+useradd -g leader -s /sbin/nologin leader03
+
+## 创建网络部员工
+useradd  -g  netb  -s  /sbin/nologin  netb01
+useradd  -g  netb  -s  /sbin/nologin  netb02
+useradd  -g  netb  -s  /sbin/nologin  netb03
+
+## 查看是否创建用户成功,是否各属主组一致
+cat  /etc/passwd
+</code></pre>
+<h2 id="将所有用户添加到samba"><a href="#将所有用户添加到samba" class="headerlink" title="将所有用户添加到samba"></a>将所有用户添加到samba</h2><pre><code>smbpasswd  用户名
+## 查看已添加的samba用户
+pdbedit  -L
+</code></pre>
+<h2 id="权限分析"><a href="#权限分析" class="headerlink" title="权限分析"></a>权限分析</h2><p>chmod<br>由于对外目录公司所有员工都可访问，所以部门目录要设置为755<br>对外目录全公司可访问，但不能修改，故设置为755<br>部门公共目录，只有本部门员工和领导层可访问，且不能改，故设为750<br>部门受控目录，只有主管和领导可以访问，故设置为700</p>
+<p>chown<br>设置公共区域权限<br>公共区和交换区的管理都是由网络部维护的，所以可以使用acl赋予网络部读写执行权限<br>对外和公共目录都由本部门的文员负责，直接修改此目录的所有者为文员，由组权限5变为所有者权限7<br>受控目录由部门主管维护，所以设置受控目录所有者为主管</p>
+<p>setfacl<br>领导属于other，other没有权限，但公共目录领导可访问，所以单独设置acl组权限<br>同理受控目录也需要为领导组设置组acl权限<br>财务部与管理部有指定访问人，所以要设置的是acl的用户权限</p>
+<pre><code>chmod 755 /DocRoot/
+chmod 755 /DocRoot/公共区/
+chmod 1777 /DocRoot/交换区/ //交换区要可以写但不可以删除他人文件所以要加粘滞位sticky bit=1
+</code></pre>
+<h2 id="修改管理部文件夹权限（chmod）和文件夹所有者（chown）"><a href="#修改管理部文件夹权限（chmod）和文件夹所有者（chown）" class="headerlink" title="修改管理部文件夹权限（chmod）和文件夹所有者（chown）"></a>修改管理部文件夹权限（chmod）和文件夹所有者（chown）</h2><pre><code>chmod 755 /DocRoot/管理部/
+chmod 755 /DocRoot/管理部/对外/
+chmod 750 /DocRoot/管理部/公共/
+chmod 700 /DocRoot/管理部/受控/
+chown glb01:glb /DocRoot/管理部/受控/
+chown glb02:glb /DocRoot/管理部/对外/
+chown glb02:glb /DocRoot/管理部/公共/
+</code></pre>
+<h2 id="修改财务部文件夹权限（chmod）和文件夹所有者（chown）"><a href="#修改财务部文件夹权限（chmod）和文件夹所有者（chown）" class="headerlink" title="修改财务部文件夹权限（chmod）和文件夹所有者（chown）"></a>修改财务部文件夹权限（chmod）和文件夹所有者（chown）</h2><pre><code>chmod 755 /DocRoot/财务部/
+chmod 755 /DocRoot/财务部/对外/
+chmod 750 /DocRoot/财务部/公共/
+chmod 700 /DocRoot/财务部/受控/
+chown cwb01:cwb /DocRoot/财务部/受控/
+chown cwb02:cwb /DocRoot/财务部/对外/
+chown cwb02:cwb /DocRoot/财务部/公共/
+</code></pre>
+<h2 id="修改制造部文件夹权限（chmod）和文件夹所有者（chown）"><a href="#修改制造部文件夹权限（chmod）和文件夹所有者（chown）" class="headerlink" title="修改制造部文件夹权限（chmod）和文件夹所有者（chown）"></a>修改制造部文件夹权限（chmod）和文件夹所有者（chown）</h2><pre><code>chmod 755 /DocRoot/制造部/
+chmod 755 /DocRoot/制造部/对外/
+chmod 750 /DocRoot/制造部/公共/
+chmod 700 /DocRoot/制造部/受控/
+chown zzb01:zzb /DocRoot/制造部/受控/
+chown zzb02:zzb /DocRoot/制造部/对外/
+chown zzb02:zzb /DocRoot/制造部/公共/
+</code></pre>
+<h2 id="Setfacl细分目录权限"><a href="#Setfacl细分目录权限" class="headerlink" title="Setfacl细分目录权限"></a>Setfacl细分目录权限</h2><pre><code>setfacl -m g:netb:rwx /DocRoot/公共区/
+setfacl -m g:netb:rwx /DocRoot/交互区/
+
+## 管理部
+setfacl -m g:leader:rx /DocRoot/管理部/公共
+setfacl -m u:leader01:rx /DocRoot/管理部/受控
+
+## 财务部
+setfacl -m g:leader:rx /DocRoot/财务部/公共
+setfacl -m u:leader01:rx /DocRoot/财务部/受控
+setfacl -m u:leader03:rx /DocRoot/财务部/受控
+
+## 制造部
+setfacl -m g:leader:rx /DocRoot/制造部/公共
+setfacl -m g:leader:rx /DocRoot/制造部/受控
+</code></pre>
+<h2 id="修改samba配置文件将文件共享出去"><a href="#修改samba配置文件将文件共享出去" class="headerlink" title="修改samba配置文件将文件共享出去"></a>修改samba配置文件将文件共享出去</h2><pre><code>vim /etc/samba/smb.conf
+
+[公司文档]
+        path = /DocRoot
+        public = yes
+        writable = yes
+</code></pre>
+<h2 id="修改完配置文件要重启smb服务才会生效"><a href="#修改完配置文件要重启smb服务才会生效" class="headerlink" title="修改完配置文件要重启smb服务才会生效"></a>修改完配置文件要重启smb服务才会生效</h2><pre><code>systemctl restart smb.service
+systemctl status smb.service //查询smb服务状态
+</code></pre>
+<h2 id="修改selinux安全上下文"><a href="#修改selinux安全上下文" class="headerlink" title="修改selinux安全上下文"></a>修改selinux安全上下文</h2><pre><code>semanage fcontext -a -t samba share t &#39;/DocRoot(/.*)?&#39;
+ls -lZ /DocRoot/  //查询目录安全上下文
+restorecon -Rv /DocRoot/   //刷新安全上下文
+</code></pre>
+<h2 id="防火墙放行samba服务"><a href="#防火墙放行samba服务" class="headerlink" title="防火墙放行samba服务"></a>防火墙放行samba服务</h2><pre><code>firewall-cmd --add-serivce=samba  //临时放行
+firewall-cmd --add-serivce=samba --permanent //永久放行
+firewall-cmd --reload 
+</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
     </div>
