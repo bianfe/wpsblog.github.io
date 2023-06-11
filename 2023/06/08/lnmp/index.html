@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>docker镜像管理 | wps的blog</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="docker镜像管理 | wps的blog">
+  <title>LNMP架构搭建与web应用 | wps的blog</title>
+  <meta name="keywords" content=" Linux ">
+  <meta name="description" content="LNMP架构搭建与web应用 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -678,9 +678,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-docker镜像定制" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-lnmp" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">docker镜像管理</h1>
+        <h1 class="article-title">LNMP架构搭建与web应用</h1>
     
     <div class="article-meta">
         
@@ -695,15 +695,22 @@
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Linux</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-04 22:57:12'>2023-03-04 22:41</time>
+            Created At : <time class="date" title='Updated At: 2023-06-11 23:06:37'>2023-06-08 23:48</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:198</span>
+        <span>Count:329</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -733,7 +740,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="toc-text">1.下载镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F%E5%88%A0%E9%99%A4"><span class="toc-text">2.本地镜像删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%95%9C%E5%83%8F%E4%BF%9D%E5%AD%98"><span class="toc-text">3.镜像保存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F%E6%9F%A5%E7%9C%8B"><span class="toc-text">4.本地镜像查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%95%9C%E5%83%8F%E8%BD%BD%E5%85%A5"><span class="toc-text">5.镜像载入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%95%9C%E5%83%8F%E6%90%9C%E7%B4%A2"><span class="toc-text">6.镜像搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%95%9C%E5%83%8F%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-inspect"><span class="toc-text">7.镜像详细信息-inspect</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%90%AD%E5%BB%BALNMP%E7%8E%AF%E5%A2%83"><span class="toc-text">一、搭建LNMP环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BDdiscuz"><span class="toc-text">二、下载discuz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85%E5%89%8D%E6%9D%A1%E4%BB%B6%E6%A3%80%E6%9F%A5"><span class="toc-text">三、安装前条件检查</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -749,25 +756,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-下载镜像"><a href="#1-下载镜像" class="headerlink" title="1.下载镜像"></a>1.下载镜像</h3><p>从docker指定的仓库下载镜像到本地</p>
-<pre><code>docker pull
+        <p>项目介绍<br>LNMP是LINUX+NGINX+MYAQL或MARIADB+PHP的缩写，是一起使用来运行动态网站或者服务器的自由软件名称<br>DISCUZ：是通用的社区论坛软件系统<br>WORKPRESS：是一款能让您建立出色网站、博客或应用程序的开源软件。</p>
+<p>项目要求<br>在公司的阿里云ECS服务器中搭建论坛系统（BBS）和内容管理系统（CMS）</p>
+<h2 id="一、搭建LNMP环境"><a href="#一、搭建LNMP环境" class="headerlink" title="一、搭建LNMP环境"></a>一、搭建LNMP环境</h2><pre><code class="bash">## 下载nginx、maridb-service和php
+yum install -y nginx maridb-service php 
+systemctl enable --now nginx.service
+systemctl enable --now mariadb
+
+## 防火墙放行
+firewall-cmd --add-service=mysql 
+firewall-cmd --add-service=mysql --permanent 
+firewall-cmd --reload 
+
+## 临时关闭selinux
+setenforce 0
+ss -ltpn  #查看端口占用情况
 </code></pre>
-<h3 id="2-本地镜像删除"><a href="#2-本地镜像删除" class="headerlink" title="2.本地镜像删除"></a>2.本地镜像删除</h3><p>删除本地镜像库中的某个镜像</p>
-<pre><code>docker rmi [镜像名称或者ID]
+<h2 id="二、下载discuz"><a href="#二、下载discuz" class="headerlink" title="二、下载discuz"></a>二、下载discuz</h2><pre><code class="bash">## wget下载压缩包 -O指定文件名称 discuz.zip
+ wget https://gitee.com/Discuz/DiscuzX/attach_files/1345207/download - O  
+
+## 解压压缩包 -d指定名称
+unzip discuz.zip -d _tmp
+
+## 进入配置文件查找网页根目录
+cat /etc/nginx/nginx.conf
+
+## 将解压的文件移动到网页根目录下
+mv _tmp/upload/ /usr/share/nginx/html/bbs 
 </code></pre>
-<h3 id="3-镜像保存"><a href="#3-镜像保存" class="headerlink" title="3.镜像保存"></a>3.镜像保存</h3><p>保存镜像为压缩文件</p>
-<pre><code>docker save -o 压缩文件名称 [镜像名称或者ID]
-</code></pre>
-<h3 id="4-本地镜像查看"><a href="#4-本地镜像查看" class="headerlink" title="4.本地镜像查看"></a>4.本地镜像查看</h3><pre><code>docker images
-</code></pre>
-<h3 id="5-镜像载入"><a href="#5-镜像载入" class="headerlink" title="5.镜像载入"></a>5.镜像载入</h3><p>导入由save保存出来的压缩文件镜像</p>
-<pre><code>docker load -i 镜像压缩文件名称 [镜像名称或者ID]
-</code></pre>
-<h3 id="6-镜像搜索"><a href="#6-镜像搜索" class="headerlink" title="6.镜像搜索"></a>6.镜像搜索</h3><p>从docker镜像仓库模糊搜索镜像</p>
-<pre><code>docker search 镜像关键字
-</code></pre>
-<h3 id="7-镜像详细信息-inspect"><a href="#7-镜像详细信息-inspect" class="headerlink" title="7.镜像详细信息-inspect"></a>7.镜像详细信息-inspect</h3><p>显示镜像的详细导入由save保存出来的压缩文件镜像</p>
-<pre><code>docker load -i 镜像压缩文件名称 [镜像名称或者ID]
+<h2 id="三、安装前条件检查"><a href="#三、安装前条件检查" class="headerlink" title="三、安装前条件检查"></a>三、安装前条件检查</h2><pre><code># 赋予文件可写权限
+vim dir.txt
+for dir in $(cat dir.txt); do chmod o+w $&#123;dir&#125;; done
+
+# 函数依赖安装
+yum install -y php-mysql # rhel7以下的环境安装
+yum install -y php-mysqlnd # rhel8以上的环境安装
+
+# 为maridb配置安全环境
+mysql_secure_installation
 </code></pre>
 
       
