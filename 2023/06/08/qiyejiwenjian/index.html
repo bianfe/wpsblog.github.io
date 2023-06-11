@@ -112,7 +112,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(40)</small>
+                <small>(41)</small>
             
         </div>
     </li>
@@ -151,7 +151,7 @@
                     <div data-rel="运维">
                         
                         运维
-                        <small>(17)</small>
+                        <small>(18)</small>
                         
                     </div>
                     
@@ -235,8 +235,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="40">
-<input type="hidden" id="yelog_site_word_count" value="11.4k">
+<input type="hidden" id="yelog_site_posts_number" value="41">
+<input type="hidden" id="yelog_site_word_count" value="11.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -299,6 +299,15 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 运维 "
+           href="/2023/06/11/squid/"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="squid">squid</span>
+            <span class="post-date" title="2023-06-11 23:27:49">2023/06/11</span>
+        </a>
         
         
         <a  class="All 运维 "
@@ -705,12 +714,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-06-11 22:57:35'>2023-06-08 22:36</time>
+            Created At : <time class="date" title='Updated At: 2023-06-11 23:46:57'>2023-06-08 22:36</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:1.1k</span>
+        <span>Count:1.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -756,7 +765,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="项目实施过程"><a href="#项目实施过程" class="headerlink" title="项目实施过程"></a>项目实施过程</h1><h2 id="快速创建目录"><a href="#快速创建目录" class="headerlink" title="快速创建目录"></a>快速创建目录</h2><pre><code>mkdir /DocRoot/&#123;公共区,交换区&#125; -p
+        <p>项目背景<br>你是某公司的网络管理员，公司一台刀片服务器运行RHEL9。公司大部分员工的的电脑运行Windows。按照企业要求配置文件服务器。</p>
+<p>项目要求<br>1.所有员工都能够在公司内流动办公，但不管在哪台电脑上工作，都要把自己的文件存在samba文件服务器上。<br>2.制造部、财务部、管理部，都有各自的文件目录。</p>
+<h1 id="项目实施过程"><a href="#项目实施过程" class="headerlink" title="项目实施过程"></a>项目实施过程</h1><h2 id="快速创建目录"><a href="#快速创建目录" class="headerlink" title="快速创建目录"></a>快速创建目录</h2><pre><code>mkdir /DocRoot/&#123;公共区,交换区&#125; -p
 mkdir /DocRoot/&#123;管理部,财务部,制造部&#125;/&#123;对外,公共,受控&#125; -p
 </code></pre>
 <h2 id="创建组"><a href="#创建组" class="headerlink" title="创建组"></a>创建组</h2><pre><code>groupadd cwb
@@ -793,7 +804,7 @@ useradd  -g  netb  -s  /sbin/nologin  netb03
 ## 查看是否创建用户成功,是否各属主组一致
 cat  /etc/passwd
 </code></pre>
-<h2 id="将所有用户添加到samba"><a href="#将所有用户添加到samba" class="headerlink" title="将所有用户添加到samba"></a>将所有用户添加到samba</h2><pre><code>smbpasswd  用户名
+<h2 id="将所有用户添加到samba"><a href="#将所有用户添加到samba" class="headerlink" title="将所有用户添加到samba"></a>将所有用户添加到samba</h2><pre><code>smbpasswd -a 用户名
 ## 查看已添加的samba用户
 pdbedit  -L
 </code></pre>
