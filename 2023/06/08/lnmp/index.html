@@ -714,12 +714,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-06-18 16:29:16'>2023-06-08 23:48</time>
+            Created At : <time class="date" title='Updated At: 2023-06-18 16:39:35'>2023-06-08 23:48</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:879</span>
+        <span>Count:919</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -823,7 +823,9 @@ mysql -uroot -p(密码)
 grant all on ultrax.* to &#39;discuz&#39;@&#39;localhost&#39; identified by &#39;密码&#39;;
 </code></pre>
 <p>修改配置文件账号为普通数据库人员，这样子既保证了数据库安全也可以正常访问discuz<br><img src="/2023/06/08/lnmp/images/discuzmima2.png"></p>
-<h2 id="五、进入discuz论坛管理"><a href="#五、进入discuz论坛管理" class="headerlink" title="五、进入discuz论坛管理"></a>五、进入discuz论坛管理</h2><pre><code>## 进入管理中心后会要求删除安装程序
+<h2 id="五、进入discuz论坛管理"><a href="#五、进入discuz论坛管理" class="headerlink" title="五、进入discuz论坛管理"></a>五、进入discuz论坛管理</h2><p>重新进入web安装向导,重新安装,重新选择正确的数据库用户名与密码<br><img src="/2023/06/08/lnmp/images/discuzguanli.png"></p>
+<p>重新安装即可登录admin管理员<br><img src="/2023/06/08/lnmp/images/discuzadmin.png"></p>
+<pre><code>## 进入管理中心后会要求删除安装程序
 rm ./data/install.lock
 rm ./install/index.php
 rm ./uc_server/install/index.php
