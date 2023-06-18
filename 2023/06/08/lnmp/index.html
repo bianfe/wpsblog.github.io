@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="41">
-<input type="hidden" id="yelog_site_word_count" value="12.1k">
+<input type="hidden" id="yelog_site_word_count" value="12.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -714,12 +714,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-06-18 16:11:22'>2023-06-08 23:48</time>
+            Created At : <time class="date" title='Updated At: 2023-06-18 16:29:16'>2023-06-08 23:48</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:784</span>
+        <span>Count:879</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -828,22 +828,31 @@ rm ./data/install.lock
 rm ./install/index.php
 rm ./uc_server/install/index.php
 </code></pre>
-<h2 id="六、安装完成后设置selinux"><a href="#六、安装完成后设置selinux" class="headerlink" title="六、安装完成后设置selinux"></a>六、安装完成后设置selinux</h2><pre><code>getsebool -a |grep db| grep httpd
+<h2 id="六、安装完成后设置selinux"><a href="#六、安装完成后设置selinux" class="headerlink" title="六、安装完成后设置selinux"></a>六、安装完成后设置selinux</h2><pre><code class="bash">restorecon -Rv bbs
+## 开启httpd可以网络连接数据库的sebool值
+getsebool -a |grep db| grep httpd
 setsebool -P httpd_can_network_connect_db on
+</code></pre>
+<p>开启后发现无法访问数据库写入模块（分析：原因是普通httpd的上下文标签没有写入权限）</p>
+<p><img src="/2023/06/08/lnmp/images/discuzselinux.png"></p>
+<pre><code class="bash">## 修改data文件夹下的上下文标签
 semanage fcontext -a -t httpd_sys_rw_content_t &#39;/usr/share/nginx/html/bbs/data(/.*)?&#39;
 restorecon -Rv /usr/share/nginx/html/bbs/data
 </code></pre>
 <h1 id="wordpress"><a href="#wordpress" class="headerlink" title="wordpress"></a>wordpress</h1><h2 id="一、下载安装wordpress"><a href="#一、下载安装wordpress" class="headerlink" title="一、下载安装wordpress"></a>一、下载安装wordpress</h2><pre><code class="bash">wget https://cn.wordpress.org/latest-zh_CN.zip
 unzip latest-zh_CN.zip -d wordpress
-mv wordpress/wordpress /usr/share/nginx/html/wordpress
+mv wordpress/wordpress /usr/share/nginx/html/wordpress # 将workpress移动到网页根目录下
 </code></pre>
-<pre><code class="mysql">创建一个账号wordpress只能访问wordpress数据库
+<p><img src="/2023/06/08/lnmp/images/wordpress.png"></p>
+<pre><code class="mysql">## 创建一个账号wordpress只能访问wordpress数据库
 mysql -uroot -p(密码)
 &gt; create database wordpress;
 &gt; grant all on wordpress.* to &#39;wordpress&#39;@&#39;localhost&#39; identified by &#39;密码&#39;;
 &gt; exit;
 </code></pre>
-<p><img src="/2023/06/08/lnmp/images/wp-config.png"></p>
+<p>填写数据库信息<br><img src="/2023/06/08/lnmp/images/wp-config.php.png"></p>
+<p><img src="/2023/06/08/lnmp/images/wordpresssql.png"></p>
+<p>进入wp-config.php修改配置信息<br><img src="/2023/06/08/lnmp/images/wp-config.png"></p>
 <h2 id="二、配置selinux"><a href="#二、配置selinux" class="headerlink" title="二、配置selinux"></a>二、配置selinux</h2><pre><code>## 和discuz一样重新打标签可以给予wordpress正常的httpd上下文标签
 restorecon -Rv /usr/share/nginx/html/wordpress/
 </code></pre>
