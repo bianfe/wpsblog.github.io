@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="41">
-<input type="hidden" id="yelog_site_word_count" value="12.2k">
+<input type="hidden" id="yelog_site_word_count" value="12.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -714,12 +714,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-06-11 23:46:16'>2023-06-11 23:27</time>
+            Created At : <time class="date" title='Updated At: 2023-06-18 23:09:53'>2023-06-11 23:27</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:176</span>
+        <span>Count:258</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -749,7 +749,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-text">实现正向代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-text">实现访问控制</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E4%B8%8A%E7%BD%91%E6%97%B6%E9%97%B4"><span class="toc-text">限制上网时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E9%99%90%E5%88%B6"><span class="toc-text">组合限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3"><span class="toc-text">修改默认端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ip%E5%9C%B0%E5%9D%80%E9%BB%91%E5%90%8D%E5%8D%95"><span class="toc-text">ip地址黑名单</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -767,14 +767,31 @@
       
         <p>项目背景<br>你是某公司的网管，需要访问互联网的计算机超过3000台，公司已建设完成内部局域网，并租用了100M专线连接电信主干网络，且公司拥有公网IP32个。</p>
 <p>项目要求<br>1.公司所有需要访问互联网的计算机都能正常访问互联网<br>2.尽量加快上网速度<br>3.上班时间禁止访问购物网站<br>4.具有黑名单功能，禁止某些IP访问外网</p>
-<h2 id="实现正向代理"><a href="#实现正向代理" class="headerlink" title="实现正向代理"></a>实现正向代理</h2><pre><code>yum install -y squid
+<p>客户机配置代理<br><img src="/2023/06/11/squid/images/win10.png"></p>
+<pre><code class="bash">## 安装squid服务，防火墙放行
+yum install -y squid
 systemctl enable --now squid.service
 firewall-cmd --add-service=squid --permanent
 firewall-cmd --reload
 </code></pre>
-<h2 id="实现访问控制"><a href="#实现访问控制" class="headerlink" title="实现访问控制"></a>实现访问控制</h2><pre><code>vim /etc/squid/squid.conf
+<h3 id="限制上网时间"><a href="#限制上网时间" class="headerlink" title="限制上网时间"></a>限制上网时间</h3><pre><code class="bash">vim /etc/squid/squid.conf
 acl WorkTime time 09:00-18:00
 http_access deny WorkTime
+</code></pre>
+<p><img src="/2023/06/11/squid/images/worktime.png"></p>
+<h3 id="组合限制"><a href="#组合限制" class="headerlink" title="组合限制"></a>组合限制</h3><pre><code class="bash">acl WorkTime time 09:00-18:00
+acl WebSiteBlock dstdomain &quot;/etc/squid/WebSiteBlock.list&quot;
+http_access deny Worktime WebSiteBlock
+</code></pre>
+<p><img src="/2023/06/11/squid/images/websiteblock.png"></p>
+<h3 id="修改默认端口"><a href="#修改默认端口" class="headerlink" title="修改默认端口"></a>修改默认端口</h3><pre><code class="bash">firewall-cmd --add-port=6688/tcp
+firewall-cmd --add-port=6688/tcp --permanent
+firewall-cmd --reload
+</code></pre>
+<p><img src="/2023/06/11/squid/images/port.png"></p>
+<p>防火墙放行6688端口<br><img src="/2023/06/11/squid/images/firewall.png"></p>
+<h3 id="ip地址黑名单"><a href="#ip地址黑名单" class="headerlink" title="ip地址黑名单"></a>ip地址黑名单</h3><pre><code class="bash">acl IPBlock src &quot;/etc/squid/IPBlock.list&quot;
+http_access deny IPBlock
 </code></pre>
 
       

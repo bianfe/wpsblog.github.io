@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="41">
-<input type="hidden" id="yelog_site_word_count" value="12.2k">
+<input type="hidden" id="yelog_site_word_count" value="12.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -714,12 +714,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-06-18 16:39:35'>2023-06-08 23:48</time>
+            Created At : <time class="date" title='Updated At: 2023-07-02 18:34:02'>2023-06-08 23:48</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:919</span>
+        <span>Count:925</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -769,7 +769,7 @@
 <p>项目背景<br>你就职的公司在阿里云有一台ECS服务器，该服务器运行RHEL9，现计划在公司的阿里云ECS服务器中搭建论坛系统（BBS）和内容管理系统（CMS）</p>
 <p>项目要求<br>1.配置服务器环境使之保证Discuz与Wordpress正常运行<br>2.安装Discuz与Wordpress，并按照企业要求设置板块<br>3.配置服务器安全</p>
 <h1 id="discuz"><a href="#discuz" class="headerlink" title="discuz"></a>discuz</h1><h2 id="一、搭建LNMP环境"><a href="#一、搭建LNMP环境" class="headerlink" title="一、搭建LNMP环境"></a>一、搭建LNMP环境</h2><pre><code class="bash">## 下载nginx、maridb-service和php
-yum install -y nginx maridb-service php 
+yum install -y nginx mariadb-service php 
 systemctl enable --now nginx.service
 systemctl enable --now mariadb
 
@@ -783,7 +783,7 @@ setenforce 0
 ss -ltpn  #查看端口占用情况
 </code></pre>
 <h2 id="二、下载discuz"><a href="#二、下载discuz" class="headerlink" title="二、下载discuz"></a>二、下载discuz</h2><pre><code class="bash">## wget下载压缩包 -O指定文件名称 discuz.zip
- wget https://gitee.com/Discuz/DiscuzX/attach_files/1345207/download - O  
+ wget -O discuz.zip https://gitee.com/Discuz/DiscuzX/attach_files/1345207/download   
 
 ## 解压压缩包 -d指定名称
 unzip discuz.zip -d _tmp
@@ -792,20 +792,21 @@ unzip discuz.zip -d _tmp
 cat /etc/nginx/nginx.conf
 
 ## 将解压的文件移动到网页根目录下
-mv _tmp/upload/ /usr/share/nginx/html/bbs 
-systemctl restart nginx.service
+mv _tmp/upload/ /usr/share/nginx/html
+systemctl restart nginx
 </code></pre>
 <h2 id="三、安装前条件检查"><a href="#三、安装前条件检查" class="headerlink" title="三、安装前条件检查"></a>三、安装前条件检查</h2><p><img src="/2023/06/08/lnmp/images/jiance.png"><br><img src="/2023/06/08/lnmp/images/lnmp.png" alt="dir.txt"></p>
 <pre><code>## 赋予文件可写权限
 vim dir.txt
 for dir in $(cat dir.txt); do chmod o+w $&#123;dir&#125;; done
 
+chmod -R /usr/share/nginx/html/upload
 ## 函数依赖安装
 yum install -y php-mysql # rhel7以下的环境安装
 yum install -y php-mysqlnd # rhel8以上的环境安装
 </code></pre>
 <p><img src="/2023/06/08/lnmp/images/mysql.png"></p>
-<pre><code class="bash">yum install -y nginx maridb-service
+<pre><code class="bash">yum install -y maridb-service
 ## 为maridb配置安全环境
 mysql_secure_installation
 </code></pre>
