@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>虚拟主机 | wps的blog</title>
+  <title>小程序 | wps的blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="虚拟主机 | wps的blog">
+  <meta name="description" content="小程序 | wps的blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome">
 <meta property="og:type" content="website">
@@ -696,32 +696,24 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-xunizhuji" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-xcx" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">虚拟主机</h1>
+        <h1 class="article-title">小程序</h1>
     
     <div class="article-meta">
         
         
-        
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="运维">运维</a>
-            
-        </span>
         
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-04-01 00:35:51'>2023-04-01 00:23</time>
+            Created At : <time class="date" title='Updated At: 2023-07-04 12:17:24'>2023-07-04 12:13</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:130</span>
+        <span>Count:0</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -767,41 +759,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>DNS服务器的安装</p>
-<pre><code>yum install bind
-</code></pre>
-<p>DNS服务器的配置</p>
-<pre><code>vim /etc/named.conf
-
-options&#123;
-    listen-on port 53 &#123;192.168.25.100&#125;; #监听服务器IP
-    allow-query &#123;any;&#125;; #允许所有主机查询
-&#125;
-</code></pre>
-<p>DNS区域文件的配置</p>
-<pre><code>vim /etc/named.rfc1912.zones
-
-zone &quot;25-wps.cn&quot; IN &#123;
-    type master;
-    file &quot;25-wps.cn.zone&quot;;
-    allow-update &#123;none;&#125;;
-&#125;;
-
-vim /var/named/25-wps.cn.zone
-
-$TTL 3H
-    @   IN  SOA #root.25-wps.cn.(
-                    0   ;serial
-                    1D  ;refresh
-                    1H  ;retry
-                    1W  ;expire
-                    3H  ;minimum
-    )
-</code></pre>
-<p>启动DNS服务器</p>
-<pre><code>systemctl enable --now named.service
-</code></pre>
-<p>客户端测试</p>
+        <p><img src="/2023/07/04/xcx/images/1.png"><br><img src="/2023/07/04/xcx/images/2.png"><br><img src="/2023/07/04/xcx/images/3.png"><br><img src="/2023/07/04/xcx/images/4.png"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
