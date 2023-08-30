@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="43">
-<input type="hidden" id="yelog_site_word_count" value="12.5k">
+<input type="hidden" id="yelog_site_word_count" value="12.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -717,12 +717,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-08-30 14:46:27'>2023-08-30 13:34</time>
+            Created At : <time class="date" title='Updated At: 2023-08-30 15:29:23'>2023-08-30 13:34</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:148</span>
+        <span>Count:297</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -752,7 +752,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cqhttp%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-text">cqhttp登录配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#noneboot2%E5%AE%89%E8%A3%85"><span class="toc-text">noneboot2安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B0%E8%BF%99%E9%87%8C%E6%89%80%E6%9C%89%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%B0%B1%E5%B7%B2%E7%BB%8F%E5%AE%8C%E6%88%90%E4%BA%86"><span class="toc-text">到这里所有基本配置就已经完成了</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -768,7 +768,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://github.com/rhwong/unidbg-fetch-qsign-onekey.git">https://github.com/rhwong/unidbg-fetch-qsign-onekey.git</a>   下载对应压缩包解压</p>
+        <h2 id="cqhttp登录配置"><a href="#cqhttp登录配置" class="headerlink" title="cqhttp登录配置"></a>cqhttp登录配置</h2><p><a target="_blank" rel="noopener" href="https://github.com/rhwong/unidbg-fetch-qsign-onekey.git">https://github.com/rhwong/unidbg-fetch-qsign-onekey.git</a>   下载对应压缩包解压</p>
 <p><img src="/2023/08/30/nonebot2/images/config1.png"></p>
 <p>运行go-cqhttp.bat选择3生成config.yml文件，搭配nonebot2只需要反向WebSocket<br><img src="/2023/08/30/nonebot2/images/config2.png"><br><img src="/2023/08/30/nonebot2/images/config3.png"></p>
 <p>运行Start_Qsgin.bat<br><img src="/2023/08/30/nonebot2/images/qsign1.png"></p>
@@ -781,16 +781,24 @@ Account ：qq号
 Password：密码
 # 这些东西会自动写入到config.yml文件里
 </code></pre>
-<p>回车显示最末尾显示一串地址的话表示成功<br><img src="/2023/08/30/nonebot2/images/qsign3.png"></p>
-<p>再次打开go-cqhttp.bat<br><img src="/images/cqhttp1.png"></p>
-<p><img src="/images/cqhttp3.png"></p>
-<p><img src="/images/cqhttp4.png"></p>
-<p><img src="/images/cqhttp5.png"></p>
-<pre><code># 推荐安装脚手架
+<p>回车显示最末尾显示一串地址的话表示成功</p>
+<p><img src="/2023/08/30/nonebot2/images/qsign3.png"></p>
+<p>再次打开go-cqhttp.bat，选择2手动提交ticket</p>
+<p><img src="/2023/08/30/nonebot2/images/cq1.png"></p>
+<p>复制链接到浏览器，打开开发者工具选择网络-Fetch&#x2F;XHR-预览找到ticket<br><img src="/2023/08/30/nonebot2/images/cq2.png"></p>
+<p>输入ticket回车<br><img src="/2023/08/30/nonebot2/images/cq3.png"></p>
+<p>选择扫码登录<br><img src="/2023/08/30/nonebot2/images/cq4.png"></p>
+<p>跳出链接后复制到浏览器扫码登录<br><img src="/2023/08/30/nonebot2/images/cq5.png"></p>
+<p>显示这个报错是因为我们还没有配置nonebot2<br><img src="/2023/08/30/nonebot2/images/cq6.png"></p>
+<h2 id="noneboot2安装"><a href="#noneboot2安装" class="headerlink" title="noneboot2安装"></a>noneboot2安装</h2><pre><code># 推荐安装脚手架
 pip install -i https://pypi.doubanio.com/simple nb-cli 
 </code></pre>
 <p><img src="/2023/08/30/nonebot2/images/nb2.png"></p>
-
+<p>安装选项<br><img src="/2023/08/30/nonebot2/images/nb3.png"></p>
+<p>安装好之后，进入.env.prod文件添加内容<br><img src="/2023/08/30/nonebot2/images/nb4.png"><br><img src="/2023/08/30/nonebot2/images/nb5.png"></p>
+<p>再次打开cqhttp的config.yml文件把.env.prod文件写的ip端口写道反向ws里<br><img src="/2023/08/30/nonebot2/images/nb6.png"></p>
+<p>最后同时运行cqhttp和nonebot2<br><img src="/2023/08/30/nonebot2/images/nb7.png"></p>
+<h2 id="到这里所有基本配置就已经完成了"><a href="#到这里所有基本配置就已经完成了" class="headerlink" title="到这里所有基本配置就已经完成了"></a>到这里所有基本配置就已经完成了</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
     </div>
