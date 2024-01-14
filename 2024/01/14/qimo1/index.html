@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="45">
-<input type="hidden" id="yelog_site_word_count" value="13.3k">
+<input type="hidden" id="yelog_site_word_count" value="13.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -735,12 +735,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-14 22:43:33'>2024-01-14 21:47</time>
+            Created At : <time class="date" title='Updated At: 2024-01-14 22:48:44'>2024-01-14 21:47</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:429</span>
+        <span>Count:553</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -786,8 +786,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、基本配置"><a href="#一、基本配置" class="headerlink" title="一、基本配置"></a>一、基本配置</h2><ol start="2">
-<li>配置并检查本地光盘为 YUM 源</li>
+        <h2 id="一、基本配置"><a href="#一、基本配置" class="headerlink" title="一、基本配置"></a>一、基本配置</h2><ol>
+<li><p>配置两台服务器的 IP 与主机名信息</p>
+</li>
+<li><p>配置并检查本地光盘为 YUM 源</p>
+</li>
 </ol>
 <p><img src="/2024/01/14/qimo1/images/yum.png"></p>
 <h2 id="二、RAID5"><a href="#二、RAID5" class="headerlink" title="二、RAID5"></a>二、RAID5</h2><p>在 IP 尾号为 201 的机器中添加适当数量的虚拟硬盘，并配置包含 1 块热备盘的 RAID5 阵列 md5<br><img src="/2024/01/14/qimo1/images/lsblk.png"></p>
@@ -821,14 +824,39 @@ sudo mkfs.ext4 /dev/vg-a/lv-a
 <li>安装并配置 rsync 运行在守护进程模式，配置模块名称为“module-a”，指向“&#x2F;folder-a”；</li>
 </ol>
 <pre><code>sudo yum install -y rsync-daemon
+sudo mkdir /folder-a
+sudo useradd -M -s /sbin/nologin rsync-a
+sudo chown rsync-a:rsync-a /folder-a -R
 </code></pre>
 <ol start="2">
-<li><p>运行 rsync 进程的 UID 为 rsync-a；GID 为 rsync-a<br><img src="/2024/01/14/qimo1/images/rsyncdconfig.png" alt="/etc/rsyncd.conf"></p>
-</li>
-<li><p>连接 module-a 模块的虚拟用户名为：“rsync_a”，密码为：“123”</p>
-</li>
-<li><p>防火墙、SELinux 均处在开启状态；</p>
-</li>
+<li>运行 rsync 进程的 UID 为 rsync-a；GID 为 rsync-a<br><img src="/2024/01/14/qimo1/images/rsyncdconfig.png" alt="/etc/rsyncd.conf"></li>
+</ol>
+<pre><code>
+uid = rsync-a
+gid = rsync-a
+use chroot = yes
+max connections = 4
+pid file = /var/run/rsyncd.pid
+exclude = lost+found/
+transfer logging = yes
+timeout = 900
+ignore nonreadable = yes
+dont compress   = *.gz *.tgz *.zip *.z *.Z *.rpm *.deb *.bz2
+
+[module-a]
+        path = /folder-a
+        read only = no
+        fake super = yes
+        auth users = rsync_a
+        secrets file = /etc/rsyncd.secrets
+</code></pre>
+<ol start="3">
+<li>连接 module-a 模块的虚拟用户名为：“rsync_a”，密码为：“123”</li>
+</ol>
+<pre><code>sudo bash -c &#39;echo &quot;rsync_a:123&quot; &gt; /etc/rsyncd.secrets&#39;
+</code></pre>
+<ol start="4">
+<li>防火墙、SELinux 均处在开启状态；</li>
 </ol>
 <pre><code>firewall-cmd --add-service=rsyncd
 firewall-cmd --add-service=rsyncd --per
@@ -837,6 +865,8 @@ setsebool -P rsync_full_access on
 <ol start="5">
 <li>如服务器重启，不需人工干预，服务应能正常使用。</li>
 </ol>
+<pre><code>rsync -avz /web_data rsync_a@192.168.25.202::module-a --password-file=/etc/rsync-112.pass
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
