@@ -735,12 +735,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-14 22:07:36'>2024-01-14 21:47</time>
+            Created At : <time class="date" title='Updated At: 2024-01-14 22:21:07'>2024-01-14 21:47</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:216</span>
+        <span>Count:281</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -792,11 +792,12 @@
 <p>在 IP 尾号为 201 的机器中添加适当数量的虚拟硬盘，并配置包含 1 块热备盘的 RAID5 阵列 md5<br><img src="/2024/01/14/qimo1/images/lsblk.png"></p>
 <pre><code>yum install mdadm  安装软RAID管理命令
 mdadm -Cv /dev/md5 -l5 -n3 -x1 /dev/nvme0n[2-5]
-sudo mdadm -D /dev/md5  
+mdadm -D /dev/md5  
 </code></pre>
-<p>三、LV 扩展<br><img src="/2024/01/14/qimo1/images/vgs1.png"><br><img src="/2024/01/14/qimo1/images/lvs1.png"></p>
+<p>三、LV 扩展<br>将IP 尾号为 201 的机器的 root 分区扩展到 19G。（不能使用上题所创建的 RAID，否则系统无法启动，可单独添加一块硬盘扩容）<br><img src="/2024/01/14/qimo1/images/vgs1.png"><br><img src="/2024/01/14/qimo1/images/lvs1.png"></p>
 <pre><code>vgs
 lvs
+pvcreate /dev/nvme0n6
 vgextend rhel /dev/nvme0n6
 lvextend /dev/rhel/root -L 19G -r
 </code></pre>
@@ -805,7 +806,9 @@ lvextend /dev/rhel/root -L 19G -r
 <ol>
 <li>在 IP 尾号为 201 的机器上创建名为“vg-a”的卷组，卷组包含上题所创建的阵列，在该卷组下创建名为“lv-a”的逻辑卷，大小为 9G。（如阵列创建失败，可单独添加单块硬盘代替）<br><img src="/2024/01/14/qimo1/images/lsblk2.png"></li>
 </ol>
-<pre><code>
+<pre><code>pvcreate /dev/nvme0n7
+vgcreate vg-a /dev/nvme0n7
+lvcreate vg-a -n lv-a -L 9G
 </code></pre>
 <ol start="2">
 <li>在根下创建名称为“folder-a”的文件夹，作为 lv-a 卷的挂载点，lv-a 卷的文件系统应为“ext4”，并能实现开机自动挂载。</li>
