@@ -735,12 +735,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-14 23:06:48'>2024-01-14 21:47</time>
+            Created At : <time class="date" title='Updated At: 2024-01-14 23:22:06'>2024-01-14 21:47</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:714</span>
+        <span>Count:770</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -868,8 +868,26 @@ setsebool -P rsync_full_access on
 <pre><code>rsync -avz /web_data rsync_a@192.168.25.202::module-a --password-file=/etc/rsync-112.pass
 </code></pre>
 <h2 id="六、Shell-脚本"><a href="#六、Shell-脚本" class="headerlink" title="六、Shell 脚本"></a>六、Shell 脚本</h2><p>在 IP 尾号为 202 的机器上编写名为“shell202.sh”的脚本并配置定时运行（每隔 3 分钟运行一次），将 IP 尾号为 202 的机器“&#x2F;boot&#x2F;grub2”文件夹打包存放在“~&#x2F;backup”目录后推送到 IP 尾号为 201 的机器的“&#x2F;folder-a”文件夹下，备份文件名称包含主机名称、备份日期-时间（格式采用“+%F-%H-%M”）、所备份文件夹名称。（如 rsync 守护进程方式配置失败，可配置 ssh 秘钥登录后采用 rsync 命令方式推送或使用 sshpass+scp 方式推送）</p>
-<pre><code>
+<pre><code>yum install rsync 202安装
+
+
+#!/bin/bash
+
+SOURCE_FOLDER=&quot;/boot/grub2&quot;
+DEST_FOLDER=~/backup
+TARGET_IP=&quot;192.168.25.201&quot;
+Date=$(date +%F-%H-%M)
+
+mkdir -p $DEST_FOLDER
+
+BACKUP_FILENAME=&quot;$(hostname)-$&#123;Date&#125;.tar.gz&quot;
+
+sudo tar -czvf $DEST_FOLDER/$BACKUP_FILENAME -C / $SOURCE_FOLDER
+
+export RSYNC_PASSWORD=123
+rsync $DEST_FOLDER/$BACKUP_FILENAME rsync_a@$TARGET_IP::module-a
 </code></pre>
+<p><img src="/2024/01/14/qimo1/images/shell202.png" alt="shell202.sh"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
