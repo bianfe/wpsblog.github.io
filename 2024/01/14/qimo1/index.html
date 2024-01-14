@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="45">
-<input type="hidden" id="yelog_site_word_count" value="13.4k">
+<input type="hidden" id="yelog_site_word_count" value="13.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -735,12 +735,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-14 22:48:44'>2024-01-14 21:47</time>
+            Created At : <time class="date" title='Updated At: 2024-01-14 23:06:48'>2024-01-14 21:47</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:553</span>
+        <span>Count:714</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -770,7 +770,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">一、基本配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81RAID5"><span class="toc-text">二、RAID5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81LV-%E6%89%A9%E5%B1%95"><span class="toc-text">三、LV 扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81LV-%E5%BA%94%E7%94%A8"><span class="toc-text">四、LV 应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Rsync-%E9%85%8D%E7%BD%AE"><span class="toc-text">五、Rsync 配置</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">一、基本配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81RAID5"><span class="toc-text">二、RAID5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81LV-%E6%89%A9%E5%B1%95"><span class="toc-text">三、LV 扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81LV-%E5%BA%94%E7%94%A8"><span class="toc-text">四、LV 应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Rsync-%E9%85%8D%E7%BD%AE"><span class="toc-text">五、Rsync 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81Shell-%E8%84%9A%E6%9C%AC"><span class="toc-text">六、Shell 脚本</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -829,9 +829,9 @@ sudo useradd -M -s /sbin/nologin rsync-a
 sudo chown rsync-a:rsync-a /folder-a -R
 </code></pre>
 <ol start="2">
-<li>运行 rsync 进程的 UID 为 rsync-a；GID 为 rsync-a<br><img src="/2024/01/14/qimo1/images/rsyncdconfig.png" alt="/etc/rsyncd.conf"></li>
+<li>运行 rsync 进程的 UID 为 rsync-a；GID 为 rsync-a<br><img src="/2024/01/14/qimo1/images/rsyncdconfig.png" alt="201/etc/rsyncd.conf"></li>
 </ol>
-<pre><code>
+<pre><code># 在201上写入
 uid = rsync-a
 gid = rsync-a
 use chroot = yes
@@ -866,6 +866,9 @@ setsebool -P rsync_full_access on
 <li>如服务器重启，不需人工干预，服务应能正常使用。</li>
 </ol>
 <pre><code>rsync -avz /web_data rsync_a@192.168.25.202::module-a --password-file=/etc/rsync-112.pass
+</code></pre>
+<h2 id="六、Shell-脚本"><a href="#六、Shell-脚本" class="headerlink" title="六、Shell 脚本"></a>六、Shell 脚本</h2><p>在 IP 尾号为 202 的机器上编写名为“shell202.sh”的脚本并配置定时运行（每隔 3 分钟运行一次），将 IP 尾号为 202 的机器“&#x2F;boot&#x2F;grub2”文件夹打包存放在“~&#x2F;backup”目录后推送到 IP 尾号为 201 的机器的“&#x2F;folder-a”文件夹下，备份文件名称包含主机名称、备份日期-时间（格式采用“+%F-%H-%M”）、所备份文件夹名称。（如 rsync 守护进程方式配置失败，可配置 ssh 秘钥登录后采用 rsync 命令方式推送或使用 sshpass+scp 方式推送）</p>
+<pre><code>
 </code></pre>
 
       
