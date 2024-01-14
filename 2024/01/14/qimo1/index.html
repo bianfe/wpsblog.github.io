@@ -735,12 +735,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-14 21:57:14'>2024-01-14 21:47</time>
+            Created At : <time class="date" title='Updated At: 2024-01-14 22:04:50'>2024-01-14 21:47</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:87</span>
+        <span>Count:104</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -790,13 +790,17 @@
 <p><img src="/2024/01/14/qimo1/images/yum.png"></p>
 <p>二、RAID5</p>
 <p>在 IP 尾号为 201 的机器中添加适当数量的虚拟硬盘，并配置包含 1 块热备盘的 RAID5 阵列 md5<br><img src="/2024/01/14/qimo1/images/lsblk.png"></p>
-<pre><code>yum install mdadm
+<pre><code>yum install mdadm  安装软RAID管理命令
 mdadm -Cv /dev/md5 -l5 -n3 -x1 /dev/nvme0n[2-5]
-sudo mdadm -D /dev/md5 
+sudo mdadm -D /dev/md5  
 </code></pre>
-<p>三、LV 扩展</p>
-<pre><code>vgextend rhel /dev/nvme0n6
+<p>三、LV 扩展<br><img src="/2024/01/14/qimo1/images/vgs1.png"><br><img src="/2024/01/14/qimo1/images/lvs1.png"></p>
+<pre><code>vgs
+lvs
+vgextend rhel /dev/nvme0n6
+lvextend /dev/rhel/root -L 19G -r
 </code></pre>
+<p><img src="/2024/01/14/qimo1/images/lvs2.png"></p>
 <p>四、LV 应用</p>
 
       
