@@ -735,12 +735,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-14 22:26:52'>2024-01-14 21:47</time>
+            Created At : <time class="date" title='Updated At: 2024-01-14 22:43:33'>2024-01-14 21:47</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:397</span>
+        <span>Count:429</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -791,43 +791,51 @@
 </ol>
 <p><img src="/2024/01/14/qimo1/images/yum.png"></p>
 <h2 id="二、RAID5"><a href="#二、RAID5" class="headerlink" title="二、RAID5"></a>二、RAID5</h2><p>在 IP 尾号为 201 的机器中添加适当数量的虚拟硬盘，并配置包含 1 块热备盘的 RAID5 阵列 md5<br><img src="/2024/01/14/qimo1/images/lsblk.png"></p>
-<pre><code>yum install mdadm  安装软RAID管理命令
-mdadm -Cv /dev/md5 -l5 -n3 -x1 /dev/nvme0n[2-5]
-mdadm -D /dev/md5  
+<pre><code>sudo yum install mdadm  安装软RAID管理命令
+sudo mdadm -Cv /dev/md5 -l5 -n3 -x1 /dev/nvme0n[2-5]
+sudo mdadm -D /dev/md5  
 </code></pre>
 <h2 id="三、LV-扩展"><a href="#三、LV-扩展" class="headerlink" title="三、LV 扩展"></a>三、LV 扩展</h2><p>将IP 尾号为 201 的机器的 root 分区扩展到 19G。（不能使用上题所创建的 RAID，否则系统无法启动，可单独添加一块硬盘扩容）<br><img src="/2024/01/14/qimo1/images/vgs1.png"><br><img src="/2024/01/14/qimo1/images/lvs1.png"></p>
 <pre><code>vgs
 lvs
-pvcreate /dev/nvme0n6
-vgextend rhel /dev/nvme0n6
-lvextend /dev/rhel/root -L 19G -r
+sudo pvcreate /dev/nvme0n6
+sudo vgextend rhel /dev/nvme0n6
+sudo lvextend /dev/rhel/root -L 19G -r
 </code></pre>
 <p><img src="/2024/01/14/qimo1/images/lvs2.png"></p>
 <h2 id="四、LV-应用"><a href="#四、LV-应用" class="headerlink" title="四、LV 应用"></a>四、LV 应用</h2><ol>
 <li>在 IP 尾号为 201 的机器上创建名为“vg-a”的卷组，卷组包含上题所创建的阵列，在该卷组下创建名为“lv-a”的逻辑卷，大小为 9G。（如阵列创建失败，可单独添加单块硬盘代替）<br><img src="/2024/01/14/qimo1/images/lsblk2.png"></li>
 </ol>
-<pre><code>pvcreate /dev/nvme0n7
-vgcreate vg-a /dev/nvme0n7
-lvcreate vg-a -n lv-a -L 9G
-mkfs.ext4 /dev/vg-a/lv-a
+<pre><code>sudo pvcreate /dev/nvme0n7
+sudo vgcreate vg-a /dev/nvme0n7
+sudo lvcreate vg-a -n lv-a -L 9G
+sudo mkfs.ext4 /dev/vg-a/lv-a
 </code></pre>
 <ol start="2">
 <li>在根下创建名称为“folder-a”的文件夹，作为 lv-a 卷的挂载点，lv-a 卷的文件系统应为“ext4”，并能实现开机自动挂载。</li>
 </ol>
-<pre><code>mkdir /folder-a
+<pre><code>sudo mkdir /folder-a
 /dev/vg-a/lv-a  /folder-a        ext4    defaults        0  0
 </code></pre>
 <h2 id="五、Rsync-配置"><a href="#五、Rsync-配置" class="headerlink" title="五、Rsync 配置"></a>五、Rsync 配置</h2><ol>
-<li><p>安装并配置 rsync 运行在守护进程模式，配置模块名称为“module-a”，指向“&#x2F;folder-a”；</p>
-</li>
-<li><p>运行 rsync 进程的 UID 为 rsync-a；GID 为 rsync-a</p>
+<li>安装并配置 rsync 运行在守护进程模式，配置模块名称为“module-a”，指向“&#x2F;folder-a”；</li>
+</ol>
+<pre><code>sudo yum install -y rsync-daemon
+</code></pre>
+<ol start="2">
+<li><p>运行 rsync 进程的 UID 为 rsync-a；GID 为 rsync-a<br><img src="/2024/01/14/qimo1/images/rsyncdconfig.png" alt="/etc/rsyncd.conf"></p>
 </li>
 <li><p>连接 module-a 模块的虚拟用户名为：“rsync_a”，密码为：“123”</p>
 </li>
 <li><p>防火墙、SELinux 均处在开启状态；</p>
 </li>
-<li><p>如服务器重启，不需人工干预，服务应能正常使用。</p>
-</li>
+</ol>
+<pre><code>firewall-cmd --add-service=rsyncd
+firewall-cmd --add-service=rsyncd --per
+setsebool -P rsync_full_access on
+</code></pre>
+<ol start="5">
+<li>如服务器重启，不需人工干预，服务应能正常使用。</li>
 </ol>
 
       
