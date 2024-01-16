@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="51">
-<input type="hidden" id="yelog_site_word_count" value="13.9k">
+<input type="hidden" id="yelog_site_word_count" value="14.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -789,12 +789,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-15 23:48:48'>2024-01-15 23:32</time>
+            Created At : <time class="date" title='Updated At: 2024-01-16 16:57:45'>2024-01-15 23:32</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:67</span>
+        <span>Count:752</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -824,7 +824,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-users-yml-%E7%9A%84-playbook-%E5%AE%8C%E6%88%90%E4%BB%A5%E4%B8%8B%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="toc-text">3-1 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;users.yml 的 playbook 完成以下任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-createUsers-yml-%E7%9A%84-playbook-%E5%AE%8C%E6%88%90%E4%BB%A5%E4%B8%8B%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="toc-text">3-2 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;createUsers.yml 的 playbook 完成以下任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%94%9F%E6%88%90%E7%A1%AC%E4%BB%B6%E6%8A%A5%E5%91%8A"><span class="toc-text">4.生成硬件报告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%85%8D%E7%BD%AE-cron-%E4%BD%9C%E4%B8%9A"><span class="toc-text">5.配置 cron 作业</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-safty-yml-%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E5%85%B3%E9%97%ADagent1%E5%92%8Cagent2%E9%98%B2%E7%81%AB%E5%A2%99%E5%92%8Cselinux%EF%BC%8C%E5%B9%B6%E5%88%86%E5%88%AB%E5%AE%9E%E7%8E%B0%E9%87%8D%E5%90%AF%E5%90%8E%E4%BF%9D%E6%8C%81%E7%94%9F%E6%95%88%E3%80%82"><span class="toc-text">6.在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,实现远程关闭agent1和agent2防火墙和selinux，并分别实现重启后保持生效。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#96-96-96"><span class="toc-text">&#96;&#96;&#96;</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -840,9 +840,135 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;users.yml 的 playbook 完成以下任务：<br>(1) 在agent1和agent2上分别建立如下的用户和组，并设置所有用户密码为本人学号。<br>(2) 在agent1上删除OaManager用户，并删除其家目录</p>
-<p><img src="/2024/01/15/ansiblewps1/images/users.png"></p>
-<p><img src="/2024/01/15/ansiblewps1/images/users1.png"></p>
+        <h3 id="3-1-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-users-yml-的-playbook-完成以下任务："><a href="#3-1-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-users-yml-的-playbook-完成以下任务：" class="headerlink" title="3-1 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;users.yml 的 playbook 完成以下任务："></a>3-1 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;users.yml 的 playbook 完成以下任务：</h3><p>(1) 在agent1和agent2上分别建立如下的用户和组，并设置所有用户密码为本人学号。<br>(2) 在agent1上删除OaManager用户，并删除其家目录</p>
+<p><img src="/2024/01/15/ansiblewps1/images/users.png"><br><img src="/2024/01/15/ansiblewps1/images/users1.png"></p>
+<pre><code>- name: agent1 and agent2 create group user
+  hosts: all
+  gather_facts: no
+  vars:
+    group_list: [&#39;manager&#39;,&#39;consumer&#39;]
+    con_list: [&#39;1&#39;,&#39;3&#39;,&#39;5&#39;,&#39;7&#39;,&#39;9&#39;,&#39;11&#39;]
+  tasks:
+    - name: create group
+      group:
+        name: &quot;&#123;&#123; item &#125;&#125;&quot;
+        state: present
+      with_items:
+        - &quot;&#123;&#123; group_list &#125;&#125;&quot;
+
+    - name: create user ma
+      user:
+        name: &quot;ma&#123;&#123; item &#125;&#125;&quot;
+        group: manager
+        password: &quot;&#123;&#123; '2103010225' | password_hash('sha512') &#125;&#125;&quot;
+        state: present
+      with_sequence:
+        count=15
+
+    - name: create user con
+      user:
+        name: &quot;con&#123;&#123; item &#125;&#125;&quot;
+        group: consumer
+        password: &quot;&#123;&#123; '2103010225' | password_hash('sha512') &#125;&#125;&quot;
+        state: present
+      with_items:
+        - &quot;&#123;&#123; con_list &#125;&#125;&quot;
+- name: del user OaManager
+  hosts: agent1
+  gather_facts: no
+  tasks:
+    - name: del user
+      user:
+        name: OaManager
+        remove: yes
+        state: absent
+
+</code></pre>
+<h3 id="3-2-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-createUsers-yml-的-playbook-完成以下任务："><a href="#3-2-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-createUsers-yml-的-playbook-完成以下任务：" class="headerlink" title="3-2 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;createUsers.yml 的 playbook 完成以下任务："></a>3-2 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;createUsers.yml 的 playbook 完成以下任务：</h3><p>(1) 在agent1和agent2上分别建立如下的用户和组，并设置所有用户密码为本人学号。<br>(2) 在agent2上删除testUser用户，并删除其家目录。    </p>
+<p><img src="/2024/01/15/ansiblewps1/images/createuser.png"></p>
+<p><img src="/2024/01/15/ansiblewps1/images/createuser1.png"></p>
+<pre><code>- name: agent1
+  hosts: agent1
+  gather_facts: no
+  tasks:
+    - name: create group oaUser
+      group:
+        name: oaUser
+        state: present
+
+    - name: create user usr
+      user:
+        name: &quot;usr&#123;&#123; item &#125;&#125;&quot;
+        group: oaUser
+        password: &quot;&#123;&#123; '2103010225' | password_hash('sha512') &#125;&#125;&quot;
+        state: present
+      with_sequence:
+        count=25
+
+- name: agent2
+  hosts: agent2
+  gather_facts: no
+  vars:
+    emp_list: [&#39;1&#39;,&#39;3&#39;,&#39;5&#39;,&#39;7&#39;,&#39;9&#39;,&#39;11&#39;,&#39;13&#39;,&#39;15&#39;]
+  tasks:
+    - name: create group employee
+      group:
+        name: employee
+        state: present
+
+    - name: create user emp
+      user:
+        name: &quot;emp&#123;&#123; item &#125;&#125;&quot;
+        group: employee
+        password: &quot;&#123;&#123; '2103010225' | password_hash('sha512') &#125;&#125;&quot;
+        state: present
+      with_items:
+        - &quot;&#123;&#123; emp_list &#125;&#125;&quot;
+    - name: del user testUser
+      user:
+        name: testUser
+        remove: yes
+        state: absent
+</code></pre>
+<h3 id="4-生成硬件报告"><a href="#4-生成硬件报告" class="headerlink" title="4.生成硬件报告"></a>4.生成硬件报告</h3><pre><code>创建一个名为/ansible/playbooks/hwreport.yml 的 playbook ，它将在所有受管节点上生成含有以下信息的输出文件 /opt/hwreport.txt ：        
+    HardWare details:
+    Memory:  xxMB以 MB 表示的总内存大小
+    BIOS:  xx 版本
+    Disk:   sda1  xxMB, sda2 xxMB.     
+</code></pre>
+<pre><code>- name: hwreport
+  hosts: webservers
+  tasks:
+    - name: create file
+      copy:
+        dest: /opt/hwreport.txt
+        content: |
+    - name:  2
+      shell: echo -e &#39;HardWare details&#39;:&#39; \nMemory&#39;:&#39;  &#123;&#123; ansible_memtotal_mb &#125;&#125;  \nBIOS&#39;:&#39; &#123;&#123; ansible_bios_version &#125;&#125; \nsda1 &#39;:&#39; &#123;&#123; ansible_devices.sda.partitions.sda1.size &#125;&#125; \nsda2 &#39;:&#39;  &#123;&#123; ansible_devices.sda.partitions.sda1.size &#125;&#125;   &#39; &gt; /opt/hwreport.txt
+</code></pre>
+<h3 id="5-配置-cron-作业"><a href="#5-配置-cron-作业" class="headerlink" title="5.配置 cron 作业"></a>5.配置 cron 作业</h3><p>创建一个名为&#x2F;ansible&#x2F;playbooks&#x2F;cron.yml 的 playbook :<br>该 playbook 在 dbservers主机组中的受管节点上运行<br>配置 cron 作业，该作业每隔 2 分钟运行并执行以下命令：<br>xxxx-xx-xx xx:xx “ansible in progress”  【xxxx-xx-xx xx:xx为当前时间，年-月-日 时:分】</p>
+<pre><code>- hosts: dbservers
+  gather_facts: no
+  tasks:
+    - name: create cron
+      cron:
+        name: ansible in progress
+        minute: &quot;*/2&quot;
+        job: &#39;date &quot;+%Y-%m-%d %H:%M:%S&quot;  &quot;ansible in progress&quot; &#39;
+</code></pre>
+<h3 id="6-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-safty-yml-实现远程关闭agent1和agent2防火墙和selinux，并分别实现重启后保持生效。"><a href="#6-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-safty-yml-实现远程关闭agent1和agent2防火墙和selinux，并分别实现重启后保持生效。" class="headerlink" title="6.在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,实现远程关闭agent1和agent2防火墙和selinux，并分别实现重启后保持生效。"></a>6.在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,实现远程关闭agent1和agent2防火墙和selinux，并分别实现重启后保持生效。</h3><h2 id="96-96-96"><a href="#96-96-96" class="headerlink" title="&#96;&#96;&#96;"></a><img src="/2024/01/15/ansiblewps1/images/safty.png"><br>&#96;&#96;&#96;</h2><ul>
+<li>name: stop selinux<br>hosts: webservers<br>tasks:<ul>
+<li><p>name: stop firewalld<br>service:<br>  name: firewalld<br>  state: stopped<br>  enabled: no</p>
+</li>
+<li><p>name: selinux disable<br>replace:<br>  path: &#x2F;etc&#x2F;selinux&#x2F;config<br>  regexp: ‘^SELINUX&#x3D;enforcing’<br>  replace: ‘SELINUX&#x3D;disabled’</p>
+</li>
+<li><p>name: setenforce 0<br>shell: “ setenforce 0 “</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>

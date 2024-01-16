@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="51">
-<input type="hidden" id="yelog_site_word_count" value="13.9k">
+<input type="hidden" id="yelog_site_word_count" value="14.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -789,12 +789,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-15 23:55:14'>2024-01-15 23:38</time>
+            Created At : <time class="date" title='Updated At: 2024-01-16 15:41:02'>2024-01-15 23:38</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:221</span>
+        <span>Count:334</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -824,7 +824,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-users-yml-%E7%9A%84-playbook-%E5%AE%8C%E6%88%90%E4%BB%A5%E4%B8%8B%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="toc-text">3.在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;users.yml 的 playbook 完成以下任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%94%9F%E6%88%90%E7%A1%AC%E4%BB%B6%E6%8A%A5%E5%91%8A"><span class="toc-text">4.生成硬件报告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%85%8D%E7%BD%AE-cron-%E4%BD%9C%E4%B8%9A"><span class="toc-text">5.配置 cron 作业</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-users-yml-%E7%9A%84-playbook-%E5%AE%8C%E6%88%90%E4%BB%A5%E4%B8%8B%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="toc-text">3.在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;users.yml 的 playbook 完成以下任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%94%9F%E6%88%90%E7%A1%AC%E4%BB%B6%E6%8A%A5%E5%91%8A"><span class="toc-text">4.生成硬件报告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%85%8D%E7%BD%AE-cron-%E4%BD%9C%E4%B8%9A"><span class="toc-text">5.配置 cron 作业</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-safty-yml"><span class="toc-text">6. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-copyfile-yml-%E6%8B%B7%E8%B4%9D%E6%9D%A5%E8%87%AAworkstation-x2F-opt-x2F-file-txt-%E5%88%B0agentX%E7%9A%84-x2F-var-x2F-%E7%9B%AE%E5%BD%95%E3%80%82"><span class="toc-text">7. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;copyfile.yml, 拷贝来自workstation   &#x2F;opt&#x2F;file.txt 到agentX的&#x2F;var&#x2F;目录。</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -847,6 +847,10 @@
 <p>HardWare details:<br>Memory:  xxMB以 MB 表示的总内存大小<br>BIOS:  xx 版本<br>Disk:  xxMB<br><img src="/2024/01/15/ansiblepyy1/images/hwreport.png"></p>
 <h3 id="5-配置-cron-作业"><a href="#5-配置-cron-作业" class="headerlink" title="5.配置 cron 作业"></a>5.配置 cron 作业</h3><p>创建一个名为&#x2F;ansible&#x2F;playbooks&#x2F;&#x2F;cron.yml 的 playbook :<br>该 playbook 在 dbservers主机组中的受管节点上运行<br>配置 cron 作业，该作业每隔 2 分钟运行并执行以下命令：<br>xxxx-xx-xx xx:xx “ansible in progress”  【xxxx-xx-xx xx:xx为当前时间，年-月-日 时:分】</p>
 <p><img src="/2024/01/15/ansiblepyy1/images/cron.png"></p>
+<h3 id="6-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-safty-yml"><a href="#6-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-safty-yml" class="headerlink" title="6. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,"></a>6. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,</h3><p>实现远程关闭agent1和agent2防火墙和selinux，并分别实现重启后保持生效。</p>
+<p><img src="/2024/01/15/ansiblepyy1/images/safty.png"></p>
+<h3 id="7-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-copyfile-yml-拷贝来自workstation-x2F-opt-x2F-file-txt-到agentX的-x2F-var-x2F-目录。"><a href="#7-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-copyfile-yml-拷贝来自workstation-x2F-opt-x2F-file-txt-到agentX的-x2F-var-x2F-目录。" class="headerlink" title="7. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;copyfile.yml, 拷贝来自workstation   &#x2F;opt&#x2F;file.txt 到agentX的&#x2F;var&#x2F;目录。"></a>7. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;copyfile.yml, 拷贝来自workstation   &#x2F;opt&#x2F;file.txt 到agentX的&#x2F;var&#x2F;目录。</h3><p>(1) 如果托管主机agent1和agent2存在&#x2F;var&#x2F;file.txt，则不拷贝。<br>(2) 如果托管主机agent1和agent2不存在&#x2F;var&#x2F;file.txt，则不拷贝。  </p>
+<p><img src="/2024/01/15/ansiblepyy1/images/copyfile.png"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
