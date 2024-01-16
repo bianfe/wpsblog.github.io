@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="51">
-<input type="hidden" id="yelog_site_word_count" value="16k">
+<input type="hidden" id="yelog_site_word_count" value="16.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -789,12 +789,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-16 22:14:01'>2024-01-15 23:36</time>
+            Created At : <time class="date" title='Updated At: 2024-01-16 22:26:40'>2024-01-15 23:36</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:780</span>
+        <span>Count:873</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -892,6 +892,46 @@
 ~
 </code></pre>
 <h3 id="15-创建和使用角色"><a href="#15-创建和使用角色" class="headerlink" title="15. 创建和使用角色"></a>15. 创建和使用角色</h3><p>根据下列要求，在 &#x2F;ansible&#x2F;playbooks&#x2F;roles 中创建名为 apache 的角色：<br>(1)  httpd 软件包已安装，设为在系统启动时启用并启动<br>(2)  关闭防火墙<br>(3)  模板文件 index.html.j2 已存在，用于创建具有以下输出的文件 &#x2F;var&#x2F;www&#x2F;html&#x2F;index.html ：<br>Welcome to HOSTNAME on IPADDRESS<br>其中，HOSTNAME 是受管节点的完全限定域名，IPADDRESS 则是受管节点的 IP 地址。<br>(4)  创建一个名为 &#x2F;ansible&#x2F;playbooks&#x2F;apache.yml 的 playbook：<br>该 play 在 webservers 主机组中的主机上运行并将使用 apache 角色</p>
+<pre><code># 创建角色
+ansible-galaxy init apache 
+</code></pre>
+<pre><code># roles/apache/tasks/main.yml
+# tasks file for apache
+- name: install apache
+  yum:
+    name: httpd
+    state: present
+
+- name: stop firewalld
+  service:
+    name: &quot;&#123;&#123; item &#125;&#125;&quot;
+    state: started
+    enabled: yes
+  loop:
+    - httpd
+    - firewalld
+
+- name: stop
+  firewalld:
+    service: http
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: copy
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+</code></pre>
+<pre><code># index.html.js2
+Welcome to &#123;&#123; ansible_hostname &#125;&#125; on &#123;&#123; ansible_all_ipv4_addresses&#125;&#125;
+</code></pre>
+<pre><code># apache.yml
+- name: use role
+  hosts: webservers
+  roles:
+    - apache
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
