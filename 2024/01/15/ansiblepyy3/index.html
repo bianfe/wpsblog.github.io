@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="51">
-<input type="hidden" id="yelog_site_word_count" value="16.2k">
+<input type="hidden" id="yelog_site_word_count" value="17k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -789,12 +789,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-15 23:40:01'>2024-01-15 23:38</time>
+            Created At : <time class="date" title='Updated At: 2024-01-16 22:48:20'>2024-01-15 23:38</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:0</span>
+        <span>Count:508</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -824,7 +824,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-ping-yml-%E7%9A%84-playbook-%E5%AE%8C%E6%88%90%E4%BB%A5%E4%B8%8B%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="toc-text">12. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;ping.yml 的 playbook 完成以下任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-saveabort-yml-%E5%AE%8C%E6%88%90%E4%BB%A5%E4%B8%8B%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="toc-text">13.  在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;saveabort.yml 完成以下任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E5%AE%9E%E7%8E%B0%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E3%80%82%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-mariadb-yml-%E7%9A%84-playbook%EF%BC%9A"><span class="toc-text">14. 实现错误处理。在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;mariadb.yml 的 playbook：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8%E8%A7%92%E8%89%B2"><span class="toc-text">15. 创建和使用角色</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -840,7 +840,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="12-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-ping-yml-的-playbook-完成以下任务："><a href="#12-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-ping-yml-的-playbook-完成以下任务：" class="headerlink" title="12. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;ping.yml 的 playbook 完成以下任务："></a>12. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;ping.yml 的 playbook 完成以下任务：</h3><p>(1) &#x2F;var&#x2F;tmp&#x2F;ans.txt 文件在 workstation 上<br>(2)运行&#x2F;ansible&#x2F;playbooks&#x2F;ping.yml –tags “production” 将拷贝 &#x2F;var&#x2F;tmp&#x2F;ans.txt 到 servera的&#x2F;var&#x2F;www&#x2F;html&#x2F;tag1.html<br>(3)运行&#x2F;ansible&#x2F;playbooks&#x2F;ping.yml –tags “backup” 将拷贝 &#x2F;var&#x2F;tmp&#x2F;ans.txt 到 serverb的&#x2F;var&#x2F;www&#x2F;html&#x2F;tag2.html<br><img src="/2024/01/15/ansiblepyy3/images/12.png"></p>
+<h3 id="13-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-saveabort-yml-完成以下任务："><a href="#13-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-saveabort-yml-完成以下任务：" class="headerlink" title="13.  在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;saveabort.yml 完成以下任务："></a>13.  在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;saveabort.yml 完成以下任务：</h3><p>在所有受管主机上运行<br>(1)	创建 &#x2F;data&#x2F;ansible_abort.txt 的文件，包含my node is also server#，<br>server# 代表此 playbook 运行在 agent1, agent2<br>(2)	文件 &#x2F;data&#x2F;ansible_abort.txt 已存在，则不要做任何修改<br><img src="/2024/01/15/ansiblepyy3/images/13.png"></p>
+<h3 id="14-实现错误处理。在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-mariadb-yml-的-playbook："><a href="#14-实现错误处理。在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-mariadb-yml-的-playbook：" class="headerlink" title="14. 实现错误处理。在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;mariadb.yml 的 playbook："></a>14. 实现错误处理。在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;mariadb.yml 的 playbook：</h3><p>(1) 在 agent1 上尝试安装mariadb、，并启动服务<br>(2) 如果软件包安装或服务启动失败，playbook 获取任务信息并显示<br>(3) 即使一个任务执行失败，其它所有任务也必须被执行<br>(4) 如果安装任务失败，为了便于排错，需要显示 debug 信息，以及 Installation failed<br>(5) 如果配置任务失败，为了便于排错，需要显示服务启动失败的 debug 信息，以及 Starting failed<br><img src="/2024/01/15/ansiblepyy3/images/14.png"></p>
+<h3 id="15-创建和使用角色"><a href="#15-创建和使用角色" class="headerlink" title="15. 创建和使用角色"></a>15. 创建和使用角色</h3><p>根据下列要求，在 &#x2F;home&#x2F;greg&#x2F;ansible&#x2F;roles 中创建名为 apache 的角色：<br>(1)  httpd 软件包已安装，设为在系统启动时启用并启动<br>(2)  防火墙已启用并正在运行，并使用允许访问 Web 服务器的规则<br>(3)  模板文件 index.html.j2 已存在，用于创建具有以下输出的文件 &#x2F;var&#x2F;www&#x2F;html&#x2F;index.html ：<br>Welcome to HOSTNAME on IPADDRESS<br>其中，HOSTNAME 是受管节点的完全限定域名，IPADDRESS 则是受管节点的 IP 地址。<br>(4)  创建一个名为 &#x2F;home&#x2F;greg&#x2F;ansible&#x2F;apache.yml 的 playbook：<br>该 play 在 webservers 主机组中的主机上运行并将使用 apache 角色<br><img src="/2024/01/15/ansiblepyy3/images/apache1.png" alt="vim ansible.cfg"><br><img src="/2024/01/15/ansiblepyy3/images/apache2.png"><br><img src="/2024/01/15/ansiblepyy3/images/15.png"></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
     </div>

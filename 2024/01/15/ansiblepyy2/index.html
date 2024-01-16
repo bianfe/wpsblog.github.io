@@ -236,7 +236,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="51">
-<input type="hidden" id="yelog_site_word_count" value="16.2k">
+<input type="hidden" id="yelog_site_word_count" value="17k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -789,12 +789,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-16 15:35:29'>2024-01-15 23:38</time>
+            Created At : <time class="date" title='Updated At: 2024-01-16 22:41:02'>2024-01-15 23:38</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:44</span>
+        <span>Count:328</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -824,7 +824,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%A6%82%E6%9E%9C%E6%89%98%E7%AE%A1%E4%B8%BB%E6%9C%BAagent1%E5%92%8Cagent2%E7%9A%84-x2F-data-x2F-db-info%E6%96%87%E4%BB%B6%E9%87%8C%E6%9C%89%EF%BC%8C%E5%88%99%E5%AE%89%E8%A3%85mariadb%E5%92%8Cmariadb-server%EF%BC%9B%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89-x2F-data-x2F-db-info%E6%88%96%E5%85%B6%E4%B8%AD%E6%B2%A1%E6%9C%89mariadb%EF%BC%8C%E5%88%99%E4%BB%80%E4%B9%88%E4%B9%9F%E4%B8%8D%E5%81%9A%E3%80%82"><span class="toc-text">8. 如果托管主机agent1和agent2的&#x2F;data&#x2F;db.info文件里有，则安装mariadb和mariadb-server；如果没有&#x2F;data&#x2F;db.info或其中没有mariadb，则什么也不做。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E7%BC%96%E5%86%99%E5%89%A7%E6%9C%AC%EF%BC%8C%E5%9C%A8webservers%E7%BB%84%E4%B8%8A%E5%AE%89%E8%A3%85httpd%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%90%AF%E5%8A%A8%E7%9B%B8%E5%BA%94%E6%9C%8D%E5%8A%A1%E3%80%82"><span class="toc-text">9. 编写剧本，在webservers组上安装httpd服务，启动相应服务。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-safty-yml"><span class="toc-text">10. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-ansible-yml-%E7%9A%84-playbook-%E6%98%BE%E7%A4%BA%E4%B8%BB%E6%9C%BA%E7%9A%84%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="toc-text">11. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;ansible.yml 的 playbook 显示主机的信息：</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -840,9 +840,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="8">
-<li>如果托管主机agent1和agent2的&#x2F;data&#x2F;db.info文件里有，则安装mariadb和mariadb-server；如果没有&#x2F;data&#x2F;db.info或其中没有mariadb，则什么也不做。</li>
-</ol>
+        <h3 id="8-如果托管主机agent1和agent2的-x2F-data-x2F-db-info文件里有，则安装mariadb和mariadb-server；如果没有-x2F-data-x2F-db-info或其中没有mariadb，则什么也不做。"><a href="#8-如果托管主机agent1和agent2的-x2F-data-x2F-db-info文件里有，则安装mariadb和mariadb-server；如果没有-x2F-data-x2F-db-info或其中没有mariadb，则什么也不做。" class="headerlink" title="8. 如果托管主机agent1和agent2的&#x2F;data&#x2F;db.info文件里有，则安装mariadb和mariadb-server；如果没有&#x2F;data&#x2F;db.info或其中没有mariadb，则什么也不做。"></a>8. 如果托管主机agent1和agent2的&#x2F;data&#x2F;db.info文件里有，则安装mariadb和mariadb-server；如果没有&#x2F;data&#x2F;db.info或其中没有mariadb，则什么也不做。</h3><p><img src="/2024/01/15/ansiblepyy2/images/8.png"></p>
+<h3 id="9-编写剧本，在webservers组上安装httpd服务，启动相应服务。"><a href="#9-编写剧本，在webservers组上安装httpd服务，启动相应服务。" class="headerlink" title="9. 编写剧本，在webservers组上安装httpd服务，启动相应服务。"></a>9. 编写剧本，在webservers组上安装httpd服务，启动相应服务。</h3><p>打开网页<a target="_blank" rel="noopener" href="http://192.168.x.101页面后,应显示“welcome,/">http://192.168.x.101页面后，应显示“Welcome，</a> This is XXX’s homepage!, The host is agentX”(定义在参数和模板中，XXX为个人定制)。<br>修改 &#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf ，使用 replace 模块搜索所有 AllowOverride None 内容并替换为 AllowOverride AuthConfig。<br><img src="/2024/01/15/ansiblepyy2/images/9.png"></p>
+<h3 id="10-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-safty-yml"><a href="#10-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-safty-yml" class="headerlink" title="10. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,"></a>10. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,</h3><p>实现远程关闭agent1和agent2防火墙和selinux，并分别实现重启后保持生效。<br><img src="/2024/01/15/ansiblepyy2/images/10.png"></p>
+<h3 id="11-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-ansible-yml-的-playbook-显示主机的信息："><a href="#11-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-ansible-yml-的-playbook-显示主机的信息：" class="headerlink" title="11. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;ansible.yml 的 playbook 显示主机的信息："></a>11. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;ansible.yml 的 playbook 显示主机的信息：</h3><p>(1)在所有受管主机中运行此 playbook<br>(2)此 playbook 在 &#x2F;var&#x2F;www&#x2F;html&#x2F;ansible_details.html 文件中创建一行信息，包含以下内容：”受管主机的短主机名;受管主机的物理内核数量;受管主机默认网卡的 IPV4 地址;受管主机默认网卡的MAC地址”<br>(3)内容如下例：<br>Example output: node7 4 123.123.123.123 DE:AD:BE:EF:DE:AD:BE:EF<br>(3)并上传到管理主机的&#x2F;ansible&#x2F;data目录，用ad-hoc或剧本实现。<br><img src="/2024/01/15/ansiblepyy2/images/11.png"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
