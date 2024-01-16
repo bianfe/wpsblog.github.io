@@ -789,12 +789,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-01-16 22:30:07'>2024-01-15 23:36</time>
+            Created At : <time class="date" title='Updated At: 2024-01-16 23:29:08'>2024-01-15 23:36</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:384</span>
+        <span>Count:386</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -824,7 +824,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%A6%82%E6%9E%9C%E6%89%98%E7%AE%A1%E4%B8%BB%E6%9C%BAagentX%E7%9A%84-x2F-opt-x2F-db-info%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E9%87%8C%E6%9C%89mariadb%EF%BC%8C%E5%88%99%E5%AE%89%E8%A3%85mariadb%E5%92%8Cmariadb-server%EF%BC%9B%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89-x2F-opt-x2F-db-info%E6%88%96%E5%85%B6%E4%B8%AD%E6%B2%A1%E6%9C%89mariadb%EF%BC%8C%E5%88%99%E4%BB%80%E4%B9%88%E4%B9%9F%E4%B8%8D%E5%81%9A%E3%80%82"><span class="toc-text">8. 如果托管主机agentX的&#x2F;opt&#x2F;db.info文件内容里有mariadb，则安装mariadb和mariadb-server；如果没有&#x2F;opt&#x2F;db.info或其中没有mariadb，则什么也不做。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-%E7%BC%96%E5%86%99%E5%89%A7%E6%9C%AC%EF%BC%8C%E5%9C%A8webservers%E7%BB%84%E4%B8%8A%E5%AE%89%E8%A3%85httpd%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%90%AF%E5%8A%A8%E7%9B%B8%E5%BA%94%E6%9C%8D%E5%8A%A1%E3%80%82"><span class="toc-text">9-1 编写剧本，在webservers组上安装httpd服务，启动相应服务。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-%E7%BC%96%E5%86%99%E5%89%A7%E6%9C%AC%EF%BC%8C%E5%9C%A8webservers%E7%BB%84%E4%B8%8A%E5%AE%89%E8%A3%85httpd%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%90%AF%E5%8A%A8%E7%9B%B8%E5%BA%94%E6%9C%8D%E5%8A%A1%E3%80%82"><span class="toc-text">9-2 编写剧本，在webservers组上安装httpd服务，启动相应服务。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%9C%A8-workstation-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BA-x2F-ansible-x2F-playbooks-x2F-safty-yml"><span class="toc-text">10. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -840,10 +840,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="8">
-<li>如果托管主机agentX的&#x2F;opt&#x2F;db.info文件内容里有mariadb，则安装mariadb和mariadb-server；如果没有&#x2F;opt&#x2F;db.info或其中没有mariadb，则什么也不做。</li>
-</ol>
-<p>9-1 编写剧本，在webservers组上安装httpd服务，启动相应服务。<br>(1) 打开网页<a target="_blank" rel="noopener" href="http://192.bj.xh.101页面后,应显示“welcome,/">http://192.BJ.XH.101页面后，应显示“Welcome，</a> This is XH-NAME’s homepage!, The host is agentX”(定义在参数和模板中，XH-NAME为个人定制)。<br>(2) 修改 &#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf ，使用 replace 模块搜索所有 AllowOverride None 内容并替换为 AllowOverride AuthConfig</p>
+        <h3 id="8-如果托管主机agentX的-x2F-opt-x2F-db-info文件内容里有mariadb，则安装mariadb和mariadb-server；如果没有-x2F-opt-x2F-db-info或其中没有mariadb，则什么也不做。"><a href="#8-如果托管主机agentX的-x2F-opt-x2F-db-info文件内容里有mariadb，则安装mariadb和mariadb-server；如果没有-x2F-opt-x2F-db-info或其中没有mariadb，则什么也不做。" class="headerlink" title="8. 如果托管主机agentX的&#x2F;opt&#x2F;db.info文件内容里有mariadb，则安装mariadb和mariadb-server；如果没有&#x2F;opt&#x2F;db.info或其中没有mariadb，则什么也不做。"></a>8. 如果托管主机agentX的&#x2F;opt&#x2F;db.info文件内容里有mariadb，则安装mariadb和mariadb-server；如果没有&#x2F;opt&#x2F;db.info或其中没有mariadb，则什么也不做。</h3><h3 id="9-1-编写剧本，在webservers组上安装httpd服务，启动相应服务。"><a href="#9-1-编写剧本，在webservers组上安装httpd服务，启动相应服务。" class="headerlink" title="9-1 编写剧本，在webservers组上安装httpd服务，启动相应服务。"></a>9-1 编写剧本，在webservers组上安装httpd服务，启动相应服务。</h3><p>(1) 打开网页<a target="_blank" rel="noopener" href="http://192.bj.xh.101页面后,应显示“welcome,/">http://192.BJ.XH.101页面后，应显示“Welcome，</a> This is XH-NAME’s homepage!, The host is agentX”(定义在参数和模板中，XH-NAME为个人定制)。<br>(2) 修改 &#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf ，使用 replace 模块搜索所有 AllowOverride None 内容并替换为 AllowOverride AuthConfig</p>
 <pre><code>- name: install httpd
   hosts: webservers
   gather_facts: no
@@ -869,10 +866,8 @@
         replace: &#39;AllowOverride AuthConfig&#39;
 
 </code></pre>
-<p>9-2 编写剧本，在webservers组上安装httpd服务，启动相应服务。<br>(1) 打开网页<a target="_blank" rel="noopener" href="http://192.bj.xh.101页面后,应显示“hello,/">http://192.BJ.XH.101页面后，应显示“Hello，</a> This is XH-NAME’s homepage!, The host IP is 192.BJ.XH.10X”(定义在参数和模板中，XH-NAME为个人定制)。<br>(2) 修改 &#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf ，使用 replace 模块搜索所有 AllowOverride None 内容并替换为 AllowOverride  All。</p>
-<ol start="10">
-<li>在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,<br>实现远程关闭agent1和agent2防火墙和selinux，并分别实现重启后保持生效。</li>
-</ol>
+<h3 id="9-2-编写剧本，在webservers组上安装httpd服务，启动相应服务。"><a href="#9-2-编写剧本，在webservers组上安装httpd服务，启动相应服务。" class="headerlink" title="9-2 编写剧本，在webservers组上安装httpd服务，启动相应服务。"></a>9-2 编写剧本，在webservers组上安装httpd服务，启动相应服务。</h3><p>(1) 打开网页<a target="_blank" rel="noopener" href="http://192.bj.xh.101页面后,应显示“hello,/">http://192.BJ.XH.101页面后，应显示“Hello，</a> This is XH-NAME’s homepage!, The host IP is 192.BJ.XH.10X”(定义在参数和模板中，XH-NAME为个人定制)。<br>(2) 修改 &#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf ，使用 replace 模块搜索所有 AllowOverride None 内容并替换为 AllowOverride  All。</p>
+<h3 id="10-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-safty-yml"><a href="#10-在-workstation-上创建名为-x2F-ansible-x2F-playbooks-x2F-safty-yml" class="headerlink" title="10. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,"></a>10. 在 workstation 上创建名为&#x2F;ansible&#x2F;playbooks&#x2F;safty.yml,</h3><p>实现远程关闭agent1和agent2防火墙和selinux，并分别实现重启后保持生效。</p>
 <pre><code>- name: stop selinux
   hosts: webservers
   tasks:
